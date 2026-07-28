@@ -42,6 +42,7 @@ Bayangkan kamu sedang mengelola sebuah **Bengkel Motor**:
 
 ---
 
+
 ## 3. Empat Komponen Utama PBO di Laravel
 
 Laravel dibangun 100% menggunakan konsep PBO modern. Seluruh aplikasi Laravel dijalankan oleh 4 komponen utama berikut:
@@ -92,6 +93,9 @@ Buka **Terminal** (Mac/Linux) atau **Command Prompt (CMD) / Git Bash** (Windows)
 ```bash
 php -v
 composer -v
+
+---
+
 Langkah 2: Masuk ke Folder Kerja
 Pindahkan direktori terminal ke folder penyimpanan projek kalian (misalnya folder htdocs di dalam XAMPP):
 
