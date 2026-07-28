@@ -1,484 +1,240 @@
-# BAB 1: Dasar-Dasar Pemrograman Berorientasi Objek (PBO) & Setup Laravel
+# 📘 Modul Digital
 
-Selamat datang di repository pembelajaran **Pemrograman Berorientasi Objek (PBO)** untuk **Kelas XI PPLG/RPL**.
+# Pemrograman Berbasis Objek (PBO) Menggunakan PHP
 
-Pada bab ini, kita akan mempelajari konsep dasar **Pemrograman Berorientasi Objek (Object-Oriented Programming/OOP)** serta menerapkannya secara langsung menggunakan framework **Laravel**.
-
----
-
-# 📋 Daftar Isi
-
-1. Penjelasan PBO dengan Bahasa Awam
-2. Perbandingan: Pemrograman Prosedural vs PBO
-3. Empat Komponen Utama PBO di Laravel
-4. Empat Pilar PBO
-5. Panduan Praktikum: Setup Environment & Instalasi Laravel
-6. Praktikum: Menerapkan Class, Property, dan Method
-7. Rangkuman
-8. Tugas Mandiri
+![PHP](https://img.shields.io/badge/PHP-Programming-blue)
+![OOP](https://img.shields.io/badge/Concept-OOP-green)
+![SMK](https://img.shields.io/badge/Level-SMK-orange)
 
 ---
 
-# 1. Penjelasan PBO dengan Bahasa Awam
+# 📌 Tentang Modul
 
-## Apa itu PBO (Object-Oriented Programming)?
+Modul digital ini merupakan bahan pembelajaran **Pemrograman Berbasis Objek (PBO)** menggunakan bahasa pemrograman **PHP** yang dirancang untuk membantu peserta didik memahami konsep pemrograman berbasis objek secara bertahap.
 
-Pernahkah kalian bermain game seperti **Mobile Legends**, **Free Fire**, **PUBG**, atau **GTA V**?
+Materi dalam modul ini disusun mulai dari konsep dasar Object Oriented Programming (OOP), pembuatan class dan object, penggunaan property dan method, hingga penerapan konsep OOP dalam pembuatan aplikasi sederhana.
 
-Di dalam game terdapat banyak objek, misalnya:
-
-- Hero
-- Monster
-- Mobil
-- Senjata
-- NPC
-- Item
-
-Semua benda tersebut disebut **Object (Objek)**.
-
-**Pemrograman Berorientasi Objek (PBO/OOP)** adalah metode membuat program dengan cara mengelompokkan kode berdasarkan **objek di dunia nyata**, sehingga kode menjadi lebih rapi, mudah dipahami, dan mudah dikembangkan.
-
-Setiap objek memiliki dua bagian utama.
-
-### Atribut (Property)
-
-Merupakan data atau ciri-ciri suatu objek.
-
-Contoh Hero Mobile Legends:
-
-- Nama
-- HP
-- Mana
-- Level
-- Role
-
-### Perilaku (Method)
-
-Merupakan aksi yang dapat dilakukan objek.
-
-Contoh:
-
-- Berjalan
-- Menyerang
-- Menggunakan Skill
-- Recall
+Modul ini dapat digunakan sebagai pendamping pembelajaran di kelas maupun sebagai bahan belajar mandiri.
 
 ---
 
-# 2. Perbandingan: Pemrograman Prosedural vs PBO
+# 🎯 Tujuan Pembelajaran
 
-## Pemrograman Prosedural
+Setelah mempelajari modul ini, peserta didik diharapkan mampu:
 
-Bayangkan kalian memiliki sebuah bengkel motor.
-
-Semua data dicatat dalam **satu buku besar** mulai halaman pertama sampai terakhir.
-
-Isi buku tersebut antara lain:
-
-- Data pelanggan
-- Data mekanik
-- Data transaksi
-- Data sparepart
-- Data pembayaran
-
-Semuanya bercampur menjadi satu sehingga ketika data semakin banyak akan sulit dicari.
-
-Inilah yang sering disebut **Spaghetti Code**.
+1. Memahami konsep dasar Pemrograman Berbasis Objek (OOP).
+2. Menjelaskan perbedaan pemrograman prosedural dan pemrograman berbasis objek.
+3. Membuat dan menggunakan class serta object dalam PHP.
+4. Mengimplementasikan property, method, dan constructor.
+5. Memahami konsep encapsulation, inheritance, dan polymorphism.
+6. Membuat aplikasi sederhana menggunakan konsep OOP PHP.
 
 ---
 
-## Pemrograman Berorientasi Objek (PBO)
+# 🧑‍💻 Teknologi yang Digunakan
 
-Pada PBO, setiap data dipisahkan sesuai fungsinya.
-
-Misalnya:
-
-- Data Motor
-- Data Pelanggan
-- Data Mekanik
-- Data Transaksi
-- Data Pembayaran
-
-Setiap bagian mempunyai tempatnya masing-masing sehingga kode menjadi:
-
-- Lebih rapi
-- Mudah diperbaiki
-- Mudah dikembangkan
-- Tidak saling mengganggu
+| Teknologi          | Keterangan                 |
+| ------------------ | -------------------------- |
+| PHP                | Bahasa pemrograman utama   |
+| HTML               | Struktur tampilan aplikasi |
+| CSS                | Pengaturan tampilan        |
+| MySQL              | Database penyimpanan data  |
+| Visual Studio Code | Text editor                |
+| XAMPP              | Local server               |
 
 ---
 
-# 3. Empat Komponen Utama PBO di Laravel
+# 📚 Struktur Materi
 
-Laravel dibangun menggunakan konsep **Object-Oriented Programming**.
+## BAB 1 - Pengenalan Pemrograman Berbasis Objek
 
-Komponen utamanya adalah sebagai berikut.
+Pembahasan:
 
-| Komponen | Laravel | Penjelasan |
-|----------|----------|------------|
-| **Class** | Controller, Model | Cetakan (Blueprint) suatu objek. |
-| **Object** | Instance dari Class | Hasil nyata yang dibuat dari Class. |
-| **Property** | Variabel di dalam Class | Menyimpan data atau ciri-ciri objek. |
-| **Method** | Function di dalam Class | Menyimpan aksi atau perilaku objek. |
+* Pengertian Object Oriented Programming
+* Perbedaan Procedural Programming dan OOP
+* Konsep dasar OOP
+* Manfaat penggunaan OOP
 
-## Contoh sederhana
+## BAB 2 - Class dan Object
 
-Class:
+Pembahasan:
 
-```php
-class Mobil
-{
+* Pengertian class
+* Pengertian object
+* Membuat class pada PHP
+* Membuat object dari class
 
-}
-```
+## BAB 3 - Property dan Method
 
-Property:
+Pembahasan:
 
-```php
-public $merk = "Toyota";
-```
+* Penggunaan property
+* Penggunaan method
+* Access modifier
+* Implementasi dalam program
 
-Method:
+## BAB 4 - Constructor dan Destructor
 
-```php
-public function jalan()
-{
+Pembahasan:
 
-}
-```
+* Konsep constructor
+* Fungsi constructor
+* Penggunaan destructor
 
-Object:
+## BAB 5 - Inheritance
 
-```php
-$mobil = new Mobil();
-```
+Pembahasan:
 
----
+* Konsep pewarisan
+* Parent class dan child class
+* Implementasi inheritance
 
-# 4. Empat Pilar PBO
+## BAB 6 - Encapsulation
 
-## 1. Inheritance (Pewarisan)
+Pembahasan:
 
-Class dapat mewarisi sifat dari Class lain.
+* Pengertian encapsulation
+* Public, private, dan protected
+* Keamanan data dalam objek
 
-Contoh di Laravel:
+## BAB 7 - Polymorphism
 
-```php
-class MobilController extends Controller
-```
+Pembahasan:
 
-Artinya:
+* Konsep polymorphism
+* Method overriding
+* Implementasi polymorphism
 
-MobilController memiliki seluruh kemampuan dasar dari Controller.
+## BAB 8 - Project Akhir
 
----
+Membuat aplikasi sederhana menggunakan konsep:
 
-## 2. Encapsulation (Pembungkusan Data)
-
-Data dapat dilindungi menggunakan keyword:
-
-```php
-public
-protected
-private
-```
-
-Tujuannya agar data tidak bisa diakses sembarangan.
+* Class
+* Object
+* Database
+* CRUD
+* Struktur kode OOP
 
 ---
 
-## 3. Abstraction (Penyederhanaan)
-
-Pengguna cukup memakai fungsi tanpa mengetahui proses di dalamnya.
-
-Contoh:
-
-```php
-Siswa::all();
-```
-
-Kita cukup memanggil satu perintah tanpa perlu menulis query SQL secara manual.
-
----
-
-## 4. Polymorphism (Banyak Bentuk)
-
-Satu perintah dapat menghasilkan perilaku yang berbeda.
-
-Contoh:
-
-Perintah:
+# 🗂️ Struktur Repository
 
 ```
-bergerak()
-```
-
-Pada Burung:
-
-```
-Terbang
-```
-
-Pada Ikan:
-
-```
-Berenang
+Modul-PBO-PHP
+│
+├── README.md
+│
+├── BAB-1/
+│   └── pengenalan-oop.md
+│
+├── BAB-2/
+│   └── class-object.md
+│
+├── BAB-3/
+│   └── property-method.md
+│
+├── BAB-4/
+│   └── constructor.md
+│
+├── BAB-5/
+│   └── inheritance.md
+│
+├── BAB-6/
+│   └── encapsulation.md
+│
+├── BAB-7/
+│   └── polymorphism.md
+│
+├── BAB-8/
+│   └── project-akhir.md
+│
+└── assets/
+    └── images/
 ```
 
 ---
 
-# 5. Panduan Praktikum: Setup Environment & Instalasi Laravel
+# 📝 Metode Pembelajaran
 
-## A. Persiapan Software
+Pembelajaran dilakukan melalui beberapa tahap:
 
-Pastikan komputer telah terpasang:
+1. **Memahami konsep**
 
-- PHP 8.2 atau lebih baru (melalui XAMPP/Laragon)
-- Composer
-- Visual Studio Code
+   Peserta didik mempelajari teori dan konsep dasar setiap materi.
 
----
+2. **Menganalisis contoh program**
 
-## B. Langkah 1 — Cek Instalasi
+   Peserta didik memahami cara kerja kode program yang diberikan.
 
-Buka Terminal atau CMD kemudian jalankan:
+3. **Praktik pemrograman**
 
-```bash
-php -v
-composer -v
-```
+   Peserta didik mencoba membuat program berdasarkan materi.
 
-Jika kedua versi muncul, berarti instalasi berhasil.
+4. **Latihan dan evaluasi**
 
----
+   Peserta didik mengerjakan tugas untuk mengukur pemahaman.
 
-## Langkah 2 — Masuk ke Folder Kerja
+5. **Project akhir**
 
-Misalnya menggunakan XAMPP:
-
-```bash
-cd C:/xampp/htdocs
-```
+   Peserta didik membuat aplikasi sederhana menggunakan konsep PBO.
 
 ---
 
-## Langkah 3 — Membuat Project Laravel
-
-```bash
-composer create-project laravel/laravel pbo-laravel
-```
-
-Tunggu hingga proses selesai.
-
-Jika berhasil akan muncul pesan:
-
-```
-Application key set successfully.
-```
-
----
-
-## Langkah 4 — Membuka Project
-
-```bash
-cd pbo-laravel
-code .
-```
-
----
-
-## Langkah 5 — Menjalankan Server
-
-```bash
-php artisan serve
-```
-
-Buka browser:
-
-```
-http://127.0.0.1:8000
-```
-
-Apabila muncul halaman Laravel, berarti instalasi berhasil.
-
----
-
-# 6. Praktikum: Class, Property, dan Method
-
-## Langkah 1 — Membuat Controller
-
-```bash
-php artisan make:controller MobilController
-```
-
----
-
-## Langkah 2 — Menulis Kode Controller
-
-Buka file:
-
-```
-app/Http/Controllers/MobilController.php
-```
-
-Lalu isi dengan kode berikut.
+# 💻 Contoh Program Sederhana
 
 ```php
 <?php
 
-namespace App\Http\Controllers;
+class Siswa {
 
-use Illuminate\Http\Request;
+    public $nama;
 
-class MobilController extends Controller
-{
-    // Property
-    public $merk = "Toyota Supra";
-    public $warna = "Merah";
-    public $kecepatan = 0;
-
-    // Method
-    public function tambahKecepatan()
-    {
-        $this->kecepatan += 50;
-
-        return "Mobil {$this->merk} berwarna {$this->warna} sedang melaju dengan kecepatan {$this->kecepatan} km/jam.";
+    function belajar(){
+        echo "Siswa sedang belajar PBO";
     }
 
-    // Method
-    public function mengerem()
-    {
-        return "Mobil {$this->merk} sedang mengerem.";
-    }
 }
+
+$siswa1 = new Siswa();
+
+$siswa1->belajar();
+
+?>
+```
+
+Output:
+
+```
+Siswa sedang belajar PBO
 ```
 
 ---
 
-## Langkah 3 — Routing
+# 📖 Cara Menggunakan Modul
 
-Buka file:
-
-```
-routes/web.php
-```
-
-Tambahkan:
-
-```php
-use App\Http\Controllers\MobilController;
-
-Route::get('/mobil/gas', [MobilController::class, 'tambahKecepatan']);
-
-Route::get('/mobil/rem', [MobilController::class, 'mengerem']);
-```
+1. Buka materi sesuai urutan BAB.
+2. Pelajari konsep yang diberikan.
+3. Praktikkan setiap contoh kode.
+4. Kerjakan latihan pada setiap bagian.
+5. Terapkan konsep pada project akhir.
 
 ---
 
-## Langkah 4 — Pengujian
+# 👨‍🏫 Informasi Modul
 
-Jalankan server:
-
-```bash
-php artisan serve
-```
-
-Kemudian buka:
-
-```
-http://127.0.0.1:8000/mobil/gas
-```
-
-dan
-
-```
-http://127.0.0.1:8000/mobil/rem
-```
-
-Jika berhasil maka browser akan menampilkan hasil dari method yang dipanggil.
+**Mata Pelajaran:** Pemrograman Berbasis Objek (PBO)
+**Bahasa Pemrograman:** PHP
+**Jenjang:** SMK
+**Media Pembelajaran:** Digital Module berbasis GitHub Markdown
 
 ---
 
-# 7. Rangkuman
+# ✨ Penutup
 
-Pada bab ini kita telah mempelajari bahwa:
+Pemrograman Berbasis Objek merupakan salah satu konsep penting dalam dunia pengembangan perangkat lunak. Dengan memahami konsep OOP, peserta didik akan memiliki dasar yang kuat untuk membuat aplikasi yang lebih terstruktur, mudah dikembangkan, dan mudah dipelihara.
 
-- PBO adalah metode pemrograman berbasis objek.
-- Object memiliki Property dan Method.
-- Class merupakan cetakan (Blueprint) dari Object.
-- Laravel dibangun menggunakan konsep OOP.
-- Controller dan Model merupakan contoh Class di Laravel.
-- Keyword `$this` digunakan untuk mengakses Property atau Method milik Class itu sendiri.
-- Operator `->` digunakan untuk mengakses Property maupun Method pada sebuah objek.
+Selamat belajar dan terus berlatih membuat program.
 
 ---
 
-# 8. Tugas Mandiri
-
-Kerjakan latihan berikut.
-
-### 1. Buat Controller baru
-
-```bash
-php artisan make:controller LaptopController
-```
-
----
-
-### 2. Tambahkan Property
-
-```php
-public $merk = "Asus ROG";
-public $ram = "16 GB";
-public $prosesor = "Intel Core i7";
-```
-
----
-
-### 3. Buat Method
-
-```php
-public function spesifikasi()
-{
-    return "Laptop {$this->merk} memiliki RAM {$this->ram} dengan prosesor {$this->prosesor}.";
-}
-```
-
----
-
-### 4. Tambahkan Routing
-
-```php
-use App\Http\Controllers\LaptopController;
-
-Route::get('/laptop', [LaptopController::class, 'spesifikasi']);
-```
-
----
-
-### 5. Uji di Browser
-
-```
-http://127.0.0.1:8000/laptop
-```
-
-Pastikan spesifikasi laptop tampil dengan benar.
-
----
-
-# 💡 Tips Saat Coding
-
-- Jika muncul error **Class Not Found**, pastikan telah menambahkan:
-
-```php
-use App\Http\Controllers\LaptopController;
-```
-
-- Jangan lupa mengakhiri setiap baris kode PHP dengan tanda titik koma (`;`).
-- Jalankan kembali server menggunakan:
-
-```bash
-php artisan serve
-```
-
-apabila server berhenti.
+**"Belajar Coding, Membuat Solusi."**
