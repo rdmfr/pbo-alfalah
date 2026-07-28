@@ -1,104 +1,102 @@
-Markdown
-# BAB 1: Dasar-Dasar Pemrograman Berorientasi Objek (PBO) & Setup Laravel
+# BAB 1: Dasar-Dasar Pemrograman Berorientasi Objek (PBO) dalam Framework Laravel
 
-Selamat datang di repository pembelajaran **Pemrograman Berorientasi Objek (PBO)** untuk Kelas XI PPLG / RPL. Repository ini berisi materi teori, contoh kode PHP Native, serta panduan praktikum penginstalan framework Laravel dari awal.
+Selamat datang di repository pembelajaran **Pemrograman Berorientasi Objek (PBO)** untuk Kelas XI PPLG / RPL. Pada bab ini, kita akan mempelajari konsep dasar PBO secara langsung menggunakan framework **Laravel**.
 
 ---
 
 ## 📋 Daftar Isi
-1. [Identifikasi & Konsep PBO](#1-identifikasi--konsep-pbo)
-2. [Komponen Utama PBO](#2-komponen-utama-pbo)
-3. [Empat Pilar Utama PBO](#3-empat-pilar-utama-pbo)
-4. [Implementasi Kode PHP Native](#4-implementasi-kode-php-native)
+1. [Penjelasan PBO dengan Bahasa Awam](#1-penjelasan-pbo-dengan-bahasa-awam)
+2. [Perbandingan: Cara Lama (Prosedural) vs PBO](#2-perbandingan-cara-lama-prosedural-vs-pbo)
+3. [Empat Komponen Utama PBO di Laravel](#3-empat-komponen-utama-pbo-di-laravel)
+4. [Empat Pilar Utama PBO di Laravel](#4-empat-pilar-utama-pbo-di-laravel)
 5. [Panduan Praktikum: Setup Environment & Installasi Laravel](#5-panduan-praktikum-setup-environment--installasi-laravel)
-6. [Penerapan PBO pada Framework Laravel](#6-penerapan-pbo-pada-framework-laravel)
+6. [Praktikum: Menerapkan Class, Property, & Method pada Controller](#6-praktikum-menerapkan-class-property--method-pada-controller)
 7. [Tugas Mandiri](#7-tugas-mandiri)
 
 ---
 
-## 1. Identifikasi & Konsep PBO
+## 1. Penjelasan PBO dengan Bahasa Awam
 
-### A. Apa itu PBO / OOP?
-**Pemrograman Berorientasi Objek (Object-Oriented Programming / OOP)** adalah paradigma atau tata cara pembuatan program menggunakan konsep **Object**. Objek ini memiliki data (*property/attribute*) dan prosedur/fungsi (*method*).
+### Apa itu PBO / OOP?
+Bayangkan kamu sedang bermain game seperti **Mobile Legends** atau **GTA**. 
+* Di dalam game tersebut, ada karakter **Hero**, **Siput/Monster**, **Mobil**, dan **Senjata**.
+* Semua hal di dalam game itu disebut sebagai **OBJEC / OBJEK**.
 
-### B. Perbandingan: Prosedural vs PBO
-* **Pemrograman Prosedural:** Berfokus pada langkah-langkah linier dari atas ke bawah. Ketika aplikasi membesar, kode menjadi sulit dikelola dan rentan berantakan (*spaghetti code*).
-* **Pemrograman Berorientasi Objek (PBO):** Mengorganisasikan program ke dalam **Class** dan **Object** yang saling berinteraksi secara modular, sehingga kode lebih rapi, reusable, dan mudah dikembangkan.
-
-### C. Penggunaan PBO
-PBO digunakan secara luas dalam bahasa seperti PHP, Java, C#, Python, dan C++. Pada ekosistem PHP modern, framework seperti **Laravel** dibangun 100% menggunakan paradigma PBO.
-
----
-
-## 2. Komponen Utama PBO
-
-| Komponen | Penjelasan | Contoh Dunia Nyata |
-| :--- | :--- | :--- |
-| **Class** | Draf, rancangan, atau *blueprint* yang mendeskripsikan struktur dan perilaku objek. | Cetakan / Gambar teknik mobil |
-| **Object** | Wujud nyata (*instansiasi*) yang dibuat dari sebuah Class. | Mobil fisik hasil cetakan (Toyota, Honda) |
-| **Property / Attribute** | Variabel di dalam class yang menyimpan data/karakteristik objek. | Warna, Merk, Kecepatan Maksimum |
-| **Method / Function** | Fungsi di dalam class yang mendeskripsikan aksi/perilaku objek. | `tambahKecepatan()`, `mengeram()` |
+**PBO (Pemrograman Berorientasi Objek)** adalah cara membuat program dengan mengelompokkan kode berdasarkan "Benda/Objek" nyata, bukan sekadar kumpulan perintah dari atas ke bawah. Setiap objek di dalam program punya dua hal:
+1. **Atribut / Data (Ciri-cirinya):** Misal Hero punya *Darah (HP)*, *Nama*, dan *Level*.
+2. **Perilaku / Aksi (Yang bisa dia lakukan):** Misal Hero bisa *Jalan*, *Pukul*, atau *Gunakan Skill*.
 
 ---
 
-## 3. Empat Pilar Utama PBO
+## 2. Perbandingan: Cara Lama (Prosedural) vs PBO
 
-1. **Abstraction (Abstraksi):** Proses menentukan data dan method yang dimiliki oleh suatu class dengan melihat objek dalam bentuk yang lebih umum/sederhana.
-2. **Encapsulation (Enkapsulasi):** Proses penyatuan data bersama method-nya ke dalam satu wadah (class) untuk menjaga keamanan data agar tidak diakses secara sembarangan.
-3. **Inheritance (Pewarisan):** Konsep mewariskan property dan method milik class induk (*super class*) kepada class turunannya (*child class*).
-4. **Polymorphism (Polimorfisme):** Memungkinkan penggunaan nama interface/method yang sama pada objek berbeda, namun dengan mekanisme kerja internal yang disesuaikan.
+Bayangkan kamu mengelola toko sepeda motor:
+
+* **Cara Lama (Prosedural):**
+  Kamu mencatat semua transaksi, stok, data pembeli, dan harga di **satu buku catatan panjang** dari halaman 1 sampai selesai. Kalau catatan makin tebal, kamu bakal pusing mencari data dan rentan salah coret (*spaghetti code*).
+
+* **Cara PBO (Berorientasi Objek):**
+  Kamu membuat **Formulir khusus Motor** dan **Formulir khusus Pembeli**. Setiap ada motor baru, kamu tinggal isi formulirnya. Kodenya terpisah-pisah secara rapi sesuai bentuk fisiknya, sehingga gampang dicari, diperbaiki, dan diperbanyak.
 
 ---
 
-## 4. Implementasi Kode PHP Native
+## 3. Empat Komponen Utama PBO di Laravel
 
-File contoh kode dapat kalian lihat dan jalankan di folder [`01-php-native/dasar_pbo.php`](01-php-native/dasar_pbo.php).
+Dalam framework Laravel, seluruh program disusun menggunakan 4 komponen ini. Supaya cepat paham, mari kita gunakan analogi **Cetakan Kue dan Kue Nyata**:
 
-```php
-<?php
+```text
+[ CLASS / CETAKAN ]   ---> Dibuat jadi --->   [ OBJECT / KUE NYATA ]
+  • Property : Rasa, Warna                      • Property : Cokelat, Merah
+  • Method   : Dipanggang()                     • Method   : Siap Dimakan!
+Penjelasan Sederhana:
+Class (Cetakan / Blueprint):
 
-// 1. MEMBUAT CLASS (Blueprint / Cetakan)
-class Mobil {
-    // Property (Attribute / Data)
-    public $merk;
-    public $warna;
-    public $kecepatan = 0;
+Bahasa Awam: Cetakan kue atau gambar teknik pabrik. Cetakan ini belum bisa dimakan atau dinaiki, tapi berfungsi sebagai aturan/patokan pembuatan.
 
-    // Method (Aksi / Perilaku)
-    public function tambahKecepatan($tambahan) {
-        // Keyword '$this' merujuk pada objek yang sedang aktif
-        $this->kecepatan +=$tambahan;
-        return "Mobil " . $this->merk . " berwarna " . $this->warna . " sedang melaju " . $this->kecepatan . " km/jam!";
-    }
+Di Laravel: File Controller (SiswaController.php) atau Model (Siswa.php).
 
-    public function mengeram() {
-        return "Mobil " . $this->merk . " sedang mengeram.";
-    }
-}
+Object (Bentuk Nyata / Instansiasi):
 
-// 2. MEMBUAT OBJECT (Instansiasi dengan keyword 'new')
-$mobilSatu = new Mobil();$mobilSatu->merk = "Toyota Supra";
-$mobilSatu->warna = "Merah";
+Bahasa Awam: Kue yang sudah jadi atau Mobil nyata yang sudah keluar dari pabrik. Dari 1 cetakan, kita bisa bikin ratusan kue/mobil nyata.
 
-$mobilDua = new Mobil();$mobilDua->merk = "Honda Civic";
-$mobilDua->warna = "Hitam";
+Di Laravel: Data nyata yang dipanggil dari database atau hasil dari new ClassName().
 
-// 3. MEMANGGIL METHOD MENGGUNAKAN OPERATOR '->'
-echo $mobilSatu->tambahKecepatan(80); 
-// Output: Mobil Toyota Supra berwarna Merah sedang melaju 80 km/jam!
+Property (Variabel di dalam Class):
 
-echo "<br>";
+Bahasa Awam: Ciri-ciri atau identitas objek. Contoh pada HP: Merk, Warna, Kapasitas Baterai.
 
-echo $mobilDua->mengeram();
-// Output: Mobil Honda Civic sedang mengeram.
+Di Laravel: Variabel seperti public $nama; atau protected $table = 'siswa';.
 
-?>
-Simbol Penting dalam PHP PBO:
-new : Perintah untuk membuat Object baru dari sebuah Class.
+Method (Fungsi di dalam Class):
 
--> : Operator untuk mengakses Property atau Method milik objek.
+Bahasa Awam: Aksi atau tombol fungsi yang bisa ditekan. Contoh pada HP: casBaterai(), ambilFoto().
 
-$this : Variabel khusus yang merujuk pada objek yang sedang dieksekusi di dalam Class.
+Di Laravel: Fungsi seperti public function index().
+
+4. Empat Pilar Utama PBO di Laravel
+Empat pilar ini adalah "aturan main" utama dalam dunia PBO:
+
+Inheritance (Pewarisan Sifat):
+
+Bahasa Awam: Seperti sifat anak yang diturunkan dari orang tuanya. Anak otomatis punya warna kulit atau gaya rambut orang tuanya tanpa perlu dibuat dari nol.
+
+Di Laravel: class MobilController extends Controller artinya MobilController otomatis mewarisi semua kemampuan canggih bawaan Class Controller milik Laravel.
+
+Encapsulation (Pembungkusan / Keamanan):
+
+Bahasa Awam: Seperti kapsul obat atau casing HP. Komponen mesin HP yang rumit dibungkus di dalam casing supaya aman dan pengguna tidak asal mencolok kabel mesin.
+
+Di Laravel: Menggunakan kata kunci public, protected, atau private pada variabel agar data penting tidak diubah sembarangan dari luar.
+
+Abstraction (Penyederhanaan):
+
+Bahasa Awam: Saat kamu menyalakan TV, kamu cuma perlu menekan Tombol Power di remote. Kamu tidak perlu tahu bagaimana gelombang listrik bergerak di dalam mesin TV.
+
+Di Laravel: Kamu cukup mengetik Siswa::all() untuk mengambil semua data siswa, tanpa perlu pusing menulis perintah SQL yang rumit.
+
+Polymorphism (Banyak Bentuk):
+
+Bahasa Awam: Perintahnya sama, tapi hasilnya beda. Contoh: Perintah "Bergerak". Jika diberikan ke Burung, dia akan terbang. Jika diberikan ke Ikan, dia akan berenang.
 
 5. Panduan Praktikum: Setup Environment & Installasi Laravel
 Ikuti langkah-langkah praktikum berikut di komputer lab/laptop masing-masing:
@@ -115,7 +113,7 @@ Pindahkan direktori terminal ke folder penyimpanan projek kalian (misalnya folde
 Bash
 cd C:/xampp/htdocs
 Langkah 3: Install Project Laravel Baru
-Jalankan perintah berikut untuk mengunduh dan membuat project Laravel bernama pbo-laravel:
+Jalankan perintah berikut untuk mengunduh dan membuat project Laravel baru bernama pbo-laravel:
 
 Bash
 composer create-project laravel/laravel pbo-laravel
@@ -132,31 +130,16 @@ Bash
 php artisan serve
 Buka browser dan akses alamat http://127.0.0.1:8000. Jika halaman utama Laravel tampil, maka instalasi berhasil.
 
-6. Penerapan PBO pada Framework Laravel
-Di dalam Laravel, konsep PBO terimplementasi penuh pada arsitektur MVC (Model-View-Controller).
+6. Praktikum: Menerapkan Class, Property, & Method pada Controller
+Mari kita buat sebuah Controller untuk mempraktikkan komponen PBO langsung di Laravel.
 
-A. Model (Representasi Database & Inheritance)
-Di Laravel, setiap tabel database diwakili oleh Class Model yang mewarisi sifat dari Class Model bawaan Laravel (extends):
-
-PHP
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-// Class 'Siswa' mewarisi (Inheritance) fungsi dari Class Model bawaan
-class Siswa extends Model {
-    protected $table = 'siswa';
-}
-B. Controller (Logika Aplikasi)
-Controller di Laravel berfungsi mengatur logika program dengan menggunakan Class dan Method.
-
-Langkah Praktikum Controller:
-
-Buka terminal di VS Code, ketik perintah Artisan berikut:
+Langkah 1: Membuat Controller (Cetakan)
+Buka Terminal di VS Code, lalu jalankan perintah Artisan berikut:
 
 Bash
-php artisan make:controller SiswaController
-Buka file app/Http/Controllers/SiswaController.php, lalu sesuaikan kodenya:
+php artisan make:controller MobilController
+Langkah 2: Menulis Kode PBO pada Controller
+Buka file app/Http/Controllers/MobilController.php, lalu ubah kode di dalamnya menjadi seperti berikut:
 
 PHP
 <?php
@@ -165,39 +148,75 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller 
+// 1. CLASS (Cetakan Utama): Mewarisi sifat dari Controller bawaan Laravel
+class MobilController extends Controller
 {
-    public $sekolah = "SMK Negeri 1";
+    // 2. PROPERTY (Ciri-ciri/Data):
+    public $merk = "Toyota Supra";
+    public $warna = "Merah";
+    public $kecepatan = 0;
 
-    public function index() 
+    // 3. METHOD (Aksi/Perilaku):
+    public function tambahKecepatan()
     {
-        $namaSiswa = "Ahmad";
-        $kelas = "XI PPLG 1";
+        // Keyword '$this' artinya: "Ambil variabel milik Class SAYA SENDIRI"
+        $this->kecepatan += 50;
 
-        return "Halo! Nama saya " . $namaSiswa . " (" . $kelas . ") dari " . $this->sekolah;
+        return "Mobil " . $this->merk . " berwarna " . $this->warna . " melaju dengan kecepatan " . $this->kecepatan . " km/jam.";
+    }
+
+    public function mengeram()
+    {
+        return "Mobil " . $this->merk . " sedang mengeram (mengerem).";
     }
 }
-Daftarkan Controller pada file routes/web.php:
+Langkah 3: Menghubungkan ke Route (Jalur Web)
+Buka file routes/web.php, tambahkan Route berikut di bagian paling bawah untuk memanggil method yang ada di Controller:
 
 PHP
-use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\MobilController;
 
-Route::get('/siswa', [SiswaController::class, 'index']);
-Akses melalui browser pada alamat: http://127.0.0.1:8000/siswa.
+// Jalur 1: Memanggil method 'tambahKecepatan'
+Route::get('/mobil/gas', [MobilController::class, 'tambahKecepatan']);
+
+// Jalur 2: Memanggil method 'mengeram'
+Route::get('/mobil/rem', [MobilController::class, 'mengeram']);
+Langkah 4: Uji Coba di Browser
+Pastikan server php artisan serve tetap berjalan, lalu buka browser dan akses URL berikut:
+
+http://127.0.0.1:8000/mobil/gas
+
+http://127.0.0.1:8000/mobil/rem
 
 7. Tugas Mandiri
-Buatlah sebuah class baru bernama Laptop (bisa di PHP native atau buat LaptopController di Laravel) dengan ketentuan:
+Buatlah sebuah Controller baru di Laravel untuk menerapkan konsep PBO secara mandiri dengan ketentuan sebagai berikut:
 
-Property: $merk, $ram, dan $prosesor.
+Buat Controller bernama LaptopController menggunakan perintah Artisan di terminal:
 
-Method: tampilkanSpesifikasi() yang mengembalikan deskripsi laptop tersebut.
+Bash
+php artisan make:controller LaptopController
+Buatlah 3 Property (variabel) di dalam LaptopController:
 
-Buat 2 Object laptop yang berbeda (contoh: ASUS dan Lenovo), lalu tampilkan hasilnya di browser!
+$merk (misal: "Asus ROG")
 
-Catatan: Kerjakan tugas mandiri di komputer masing-masing. Jika ada kendala error, silakan tanyakan langsung saat jam praktikum berlangsung.
+$ram (misal: "16 GB")
+
+$prosesor (misal: "Intel Core i7")
+
+Buatlah 1 Method bernama spesifikasi() yang mengembalikan kalimat deskripsi gabungan dari seluruh property tersebut menggunakan keyword $this.
+
+Daftarkan Controller ke dalam file routes/web.php dengan alur route /laptop.
+
+Buka http://127.0.0.1:8000/laptop di browser dan pastikan output spesifikasi laptop tampil dengan benar!
+
+Tips Saat Koding:
+
+Jika di browser muncul error "Class Not Found", periksa apakah kamu sudah menulis baris use App\Http\Controllers\LaptopController; di file routes/web.php.
+
+Jangan lupa selalu akhiri setiap baris kode PHP dengan tanda titik koma (;).
 
 
-<ElicitationsGroup message="Pilih langkah lanjutan yang ingin Anda ketahui:">
-  <Elicitation label="Berikan panduan langkah-langkah mengunggah file ini ke GitHub via Git CLI" query="Bagaimana cara mengunggah file README.md dan materi Bab 1 dari komputer ke repository GitHub menggunakan perintah Git CLI?"/>
-  <Elicitation label="Buatkan template struktur folder repository yang rapi untuk kelas PBO" query="Berikan saran struktur folder repository GitHub yang ideal untuk menampung seluruh materi PBO dari Bab 1 sampai akhir semester."/>
+<ElicitationsGroup message="Pilih opsi lanjutan yang Anda perlukan untuk persiapan kelas:">
+  <Elicitation label="Buatkan cheatsheet perintah Git CLI untuk upload file ini ke GitHub" query="Berikan ringkasan perintah Git CLI untuk mengunggah file README.md ini ke repository GitHub dari awal."/>
+  <Elicitation label="Lanjutkan ke materi Bab 2: Constructor (__construct) dan Access Modifiers" query="Buatkan materi kelanjutan Bab 2 full Laravel mengenai Constructor (__construct) dan Access Modifiers (Public, Protected, Private) dalam format README.md."/>
 </ElicitationsGroup>
