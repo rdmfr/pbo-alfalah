@@ -1102,25 +1102,3 @@ Jawablah pertanyaan berikut:
 5. Mengapa penggunaan PBO membuat program lebih mudah dikembangkan?
 
 ---
-
-# Selesai BAB 1
-
-Pada BAB berikutnya kita akan mempelajari:
-
-**BAB 2 - CLASS, OBJECT, PROPERTY, DAN METHOD LEBIH DALAM PADA LARAVEL**
-
----
-
-BAB 1 sekarang sudah memiliki alur seperti **modul ajar SMK**:
-
-✅ Tujuan pembelajaran
-✅ Apersepsi
-✅ Teori konsep
-✅ Contoh Laravel
-✅ Praktikum
-✅ Pengujian
-✅ Rangkuman
-✅ Tugas mandiri
-✅ Refleksi
-
-Format ini sudah siap dimasukkan ke GitHub Markdown dan nanti mudah dikembangkan menjadi website modul digital dengan MkDocs.
