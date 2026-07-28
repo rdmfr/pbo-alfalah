@@ -1,4 +1,4 @@
-BAB 1: Dasar-Dasar Pemrograman Berorientasi Objek (PBO) & Setup Laravel
+# BAB 1: Dasar-Dasar Pemrograman Berorientasi Objek (PBO) & Setup Laravel
 
 Selamat datang di repository pembelajaran **Pemrograman Berorientasi Objek (PBO)** untuk Kelas XI PPLG / RPL. Pada bab ini, kita akan mempelajari konsep dasar PBO secara langsung menggunakan framework **Laravel**.
 
@@ -25,8 +25,8 @@ Di dalam game tersebut, terdapat berbagai macam elemen seperti **Hero**, **Monst
 **PBO (Pemrograman Berorientasi Objek)** atau *Object-Oriented Programming (OOP)* adalah cara membuat program dengan mengelompokkan kode berdasarkan "Benda/Objek" di dunia nyata, bukan sekadar menulis deretan perintah dari atas ke bawah.
 
 Setiap objek di dalam program memiliki 2 komponen utama:
-1. **Atribut / Data (Ciri-cirinya):** Contoh pada Hero ML $\rightarrow$ *Nama*, *Darah (HP)*, *Level*, dan *Role*.
-2. **Perilaku / Aksi (Yang bisa dia lakukan):** Contoh pada Hero ML $\rightarrow$ *Berjalan*, *Menyerang*, dan *Menggunakan Skill*.
+1. **Atribut / Data (Ciri-cirinya):** Contoh pada Hero ML -> *Nama*, *Darah (HP)*, *Level*, dan *Role*.
+2. **Perilaku / Aksi (Yang bisa dia lakukan):** Contoh pada Hero ML -> *Berjalan*, *Menyerang*, dan *Menggunakan Skill*.
 
 ---
 
@@ -41,7 +41,6 @@ Bayangkan kamu sedang mengelola sebuah **Bengkel Motor**:
   Kamu membuat **Formulir khusus Motor**, **Formulir khusus Transaksi**, dan **Formulir khusus Pembeli**. Kodenya terpisah-pisah secara rapi sesuai dengan fungsi dan wujud fisiknya. Jika ada masalah pada transaksi, kamu cukup membuka Formulir Transaksi tanpa mengganggu data lainnya.
 
 ---
-
 
 ## 3. Empat Komponen Utama PBO di Laravel
 
@@ -58,7 +57,7 @@ Laravel dibangun 100% menggunakan konsep PBO modern. Seluruh aplikasi Laravel di
 
 ## 4. Empat Pilar Utama PBO di Laravel
 
- Empat pilar ini adalah "aturan main" utama dalam dunia PBO yang diterapkan langsung oleh framework Laravel:
+Empat pilar ini adalah "aturan main" utama dalam dunia PBO yang diterapkan langsung oleh framework Laravel:
 
 1. **Inheritance (Pewarisan Sifat):**
    * *Bahasa Awam:* Seperti sifat seorang anak yang diturunkan dari orang tuanya. Anak otomatis punya warna kulit atau bentuk rambut orang tuanya tanpa perlu dibuat dari awal.
@@ -82,7 +81,7 @@ Sebelum mulai coding PBO di Laravel, kita perlu menyiapkan tools dan menginstal 
 Pastikan komputer kalian sudah terpasang 3 aplikasi utama ini:
 1. **PHP (via XAMPP):** Mesin utama untuk menjalankan bahasa pemrograman PHP (minimal versi 8.2).
 2. **Composer:** Aplikasi pengunduh otomatis (*dependency manager*) untuk PHP yang bertugas mengunduh framework Laravel dari internet.
-3. **VS Code (Visual Studio Code):** Code editor tempat kita menuliskankan kode program.
+3. **VS Code (Visual Studio Code):** Code editor tempat kita menuliskan kode program.
 
 ---
 
@@ -90,12 +89,10 @@ Pastikan komputer kalian sudah terpasang 3 aplikasi utama ini:
 
 #### Langkah 1: Cek Tools
 Buka **Terminal** (Mac/Linux) atau **Command Prompt (CMD) / Git Bash** (Windows), lalu ketik perintah berikut satu per satu untuk memastikan alat utama sudah terpasang:
+
 ```bash
 php -v
 composer -v
-
----
-
 Langkah 2: Masuk ke Folder Kerja
 Pindahkan direktori terminal ke folder penyimpanan projek kalian (misalnya folder htdocs di dalam XAMPP):
 
@@ -119,7 +116,7 @@ Di dalam VS Code, buka Terminal baru (Ctrl + ~ atau menu Terminal -> New Termina
 
 Bash
 php artisan serve
-Buka browser (Google Chrome / Edge) dan ketik alamat: http://127.0.0.1:8000 atau http://localhost:8000. Jika muncul halaman selamat datang berlogo Laravel, instalasi BERHASIL.
+Buka browser (Google Chrome / Edge) dan ketik alamat: [http://127.0.0.1:8000](http://127.0.0.1:8000) atau http://localhost:8000. Jika muncul halaman selamat datang berlogo Laravel, instalasi BERHASIL.
 
 6. Praktikum: Menerapkan Class, Property, & Method pada Controller
 Mari kita buat sebuah Controller untuk mempraktikkan komponen PBO secara langsung.
@@ -177,9 +174,9 @@ Pastikan server lokal sudah menyala (php artisan serve).
 
 Buka browser dan akses alamat berikut:
 
-http://127.0.0.1:8000/mobil/gas
+[http://127.0.0.1:8000/mobil/gas](http://127.0.0.1:8000/mobil/gas)
 
-http://127.0.0.1:8000/mobil/rem
+[http://127.0.0.1:8000/mobil/rem](http://127.0.0.1:8000/mobil/rem)
 
 7. Rangkuman Bab 1
 PBO (OOP) adalah metode pemrograman berbasis objek yang mengelompokkan data (property) dan aksi (method).
@@ -207,7 +204,7 @@ Buatlah 1 Method bernama spesifikasi() yang mengembalikan teks kalimat gabungan 
 
 Hubungkan Controller tersebut ke file routes/web.php dengan jalur URL /laptop!
 
-Buka http://127.0.0.1:8000/laptop di browser dan pastikan output spesifikasi laptop tampil dengan benar!
+Buka [http://127.0.0.1:8000/laptop](http://127.0.0.1:8000/laptop) di browser dan pastikan output spesifikasi laptop tampil dengan benar!
 
 Tips Saat Koding:
 
