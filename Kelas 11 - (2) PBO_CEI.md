@@ -1,5 +1,5 @@
 # PEMROGRAMAN BERORIENTASI OBJEK (PBO)
-### Constructor, Encapsulation, dan Inheritance — Kelas XII RPL/PPLG (PHP Native)
+### Constructor, Encapsulation, dan Inheritance — Kelas XI RPL/PPLG (PHP Native)
 
 > Materi ini melanjutkan materi **Class, Object, Property, Method, dan `$this`** yang sudah dipelajari di Kelas XI. Sebelum masuk ke Laravel, kalian perlu menguasai dulu 3 konsep OOP native PHP ini, karena Laravel (dan hampir semua framework modern) dibangun di atas konsep ini.
 
