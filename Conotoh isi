@@ -1,0 +1,198 @@
+<?php
+/**
+ * =============================================
+ * CONTOH PBO PHP: SISTEM DATA KENDARAAN
+ * =============================================
+ *
+ * Konsep:
+ * - Class & Object
+ * - Property & Method
+ * - $this
+ * - Constructor
+ * - Encapsulation (private + getter)
+ * - Inheritance (extends)
+ * - Method Overriding
+ * - parent::
+ */
+
+// =============================================
+// 1. PARENT CLASS: Kendaraan
+// =============================================
+class Kendaraan
+{
+    private $merk;
+    private $harga;
+
+    public function __construct($merk, $harga)
+    {
+        $this->merk = $merk;
+        $this->harga = $harga;
+    }
+
+    // Getter merk
+    public function getMerk()
+    {
+        return $this->merk;
+    }
+
+    // Getter harga
+    public function getHarga()
+    {
+        return $this->harga;
+    }
+
+    // Method dasar
+    public function infoKendaraan()
+    {
+        $hargaFormat = "Rp" . number_format($this->harga, 0, ',', '.');
+
+        return "Merk           : {$this->merk}\n" .
+               "Harga          : {$hargaFormat}\n";
+    }
+}
+
+
+// =============================================
+// 2. CHILD CLASS: Mobil
+// =============================================
+class Mobil extends Kendaraan
+{
+    private $jumlahPintu;
+
+    public function __construct($merk, $harga, $jumlahPintu)
+    {
+        // Memanggil constructor parent
+        parent::__construct($merk, $harga);
+
+        $this->jumlahPintu = $jumlahPintu;
+    }
+
+    // Getter jumlah pintu
+    public function getJumlahPintu()
+    {
+        return $this->jumlahPintu;
+    }
+
+    // Method overriding
+    public function infoKendaraan()
+    {
+        $infoDasar = parent::infoKendaraan();
+
+        return "Jenis          : Mobil\n" .
+               $infoDasar .
+               "Jumlah Pintu   : {$this->jumlahPintu}\n";
+    }
+}
+
+
+// =============================================
+// 3. CHILD CLASS: Motor
+// =============================================
+class Motor extends Kendaraan
+{
+    private $jenisMotor;
+
+    public function __construct($merk, $harga, $jenisMotor)
+    {
+        parent::__construct($merk, $harga);
+
+        $this->jenisMotor = $jenisMotor;
+    }
+
+    // Getter jenis motor
+    public function getJenisMotor()
+    {
+        return $this->jenisMotor;
+    }
+
+    // Method overriding
+    public function infoKendaraan()
+    {
+        $infoDasar = parent::infoKendaraan();
+
+        return "Jenis          : Motor\n" .
+               $infoDasar .
+               "Tipe Motor     : {$this->jenisMotor}\n";
+    }
+}
+
+
+// =============================================
+// 4. MEMBUAT OBJECT
+// =============================================
+
+$mobil1 = new Mobil(
+    "Toyota Avanza",
+    250000000,
+    4
+);
+
+$mobil2 = new Mobil(
+    "Honda Brio",
+    180000000,
+    4
+);
+
+$motor1 = new Motor(
+    "Honda Beat",
+    19000000,
+    "Matic"
+);
+
+$motor2 = new Motor(
+    "Yamaha Vixion",
+    30000000,
+    "Sport"
+);
+
+
+// =============================================
+// 5. MENAMPILKAN DATA
+// =============================================
+
+echo "===== DATA KENDARAAN =====\n\n";
+
+echo $mobil1->infoKendaraan();
+echo "\n";
+
+echo $mobil2->infoKendaraan();
+echo "\n";
+
+echo $motor1->infoKendaraan();
+echo "\n";
+
+echo $motor2->infoKendaraan();
+echo "\n";
+
+
+// =============================================
+// 6. PENGUJIAN GETTER
+// =============================================
+
+echo "===== UJI GETTER =====\n";
+
+echo "Merk kendaraan : " . $mobil1->getMerk() . "\n";
+echo "Harga kendaraan: Rp" .
+     number_format($mobil1->getHarga(), 0, ',', '.') . "\n";
+echo "Jumlah pintu   : " . $mobil1->getJumlahPintu() . "\n";
+
+echo "\n";
+
+echo "Merk kendaraan : " . $motor1->getMerk() . "\n";
+echo "Harga kendaraan: Rp" .
+     number_format($motor1->getHarga(), 0, ',', '.') . "\n";
+echo "Tipe motor     : " . $motor1->getJenisMotor() . "\n";
+
+
+// =============================================
+// 7. PENGUJIAN ENCAPSULATION
+// =============================================
+
+// Baris berikut akan ERROR karena $merk bersifat private:
+//
+// echo $mobil1->merk;
+//
+// Cara yang benar adalah menggunakan getter:
+//
+// echo $mobil1->getMerk();
+?>
