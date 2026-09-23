@@ -1,9 +1,11 @@
 # MODUL AJAR
 ## PEMROGRAMAN BERORIENTASI OBJEK (PBO)
-### BAB 1 — Dasar-Dasar PBO & Setup Laravel
+### BAB 1 — Konsep Dasar PBO: Abstraction & Polymorphism
 
 *Fase F — Kelas XI, Konsentrasi Pengembangan Perangkat Lunak dan Gim (PPLG)*
 *Kurikulum Merdeka*
+
+> **Catatan revisi:** Instalasi Laravel dan penerapan PBO pada arsitektur MVC dipindahkan ke modul semester 2. Pilar **Encapsulation**, **Inheritance**, dan pembahasan **Constructor** sudah dibahas pada modul terpisah, sehingga Bab 1 ini difokuskan pada pilar **Abstraction** dan **Polymorphism**, ditambah materi **Class Diagram sederhana** sebagai alat bantu merancang class sebelum menulis kode.
 
 ---
 
@@ -15,54 +17,53 @@
 |---|---|
 | Mata Pelajaran | Pemrograman Berorientasi Objek (PBO) |
 | Fase / Kelas | F / XI PPLG |
-| Alokasi Waktu | 3 x pertemuan (@ 6 JP, 1 JP = 45 menit) |
+| Alokasi Waktu | 2 x pertemuan (@ 6 JP, 1 JP = 45 menit) |
 | Elemen | Berpikir Komputasional & Pemrograman Berbasis Objek |
 | Model Pembelajaran | Discovery Learning & Project Based Learning (PjBL) |
 | Moda | Tatap muka / Blended Learning (Laboratorium Komputer) |
 
 ### 2. Capaian Pembelajaran (CP)
 
-Pada akhir fase F, peserta didik mampu memahami konsep dasar pemrograman berorientasi objek (Class, Object, Property, Method) serta menerapkan empat pilar PBO (Abstraction, Encapsulation, Inheritance, Polymorphism) dalam bahasa pemrograman PHP dan framework Laravel untuk membangun aplikasi berbasis MVC secara terstruktur.
+Pada akhir Bab 1, peserta didik mampu memahami konsep dasar pemrograman berorientasi objek (Class, Object, Property, Method), merancang class secara sederhana menggunakan Class Diagram, serta menerapkan pilar **Abstraction** dan **Polymorphism** dalam bahasa pemrograman PHP native, sebagai fondasi sebelum mempelajari pilar Encapsulation, Inheritance, dan penerapan PBO pada framework di semester berikutnya.
 
 ### 3. Tujuan Pembelajaran (TP)
 
 1. Peserta didik dapat menjelaskan konsep dan perbedaan antara pemrograman prosedural dan pemrograman berorientasi objek dengan tepat.
 2. Peserta didik dapat mengidentifikasi komponen utama PBO (Class, Object, Property, Method) dan menganalogikannya dengan contoh kehidupan sehari-hari.
-3. Peserta didik dapat menjelaskan dan memberi contoh empat pilar PBO (Abstraction, Encapsulation, Inheritance, Polymorphism).
-4. Peserta didik dapat menuliskan kode PBO sederhana menggunakan PHP native (membuat class, object, property, dan method).
-5. Peserta didik dapat melakukan instalasi framework Laravel dan menjalankan server lokal.
-6. Peserta didik dapat menghubungkan konsep PBO dengan komponen Model dan Controller pada arsitektur MVC di Laravel.
+3. Peserta didik dapat menggambarkan rancangan sebuah class secara sederhana dalam bentuk Class Diagram sebelum menuliskannya sebagai kode.
+4. Peserta didik dapat menjelaskan dan memberi contoh pilar **Abstraction** dan **Polymorphism** dalam PBO.
+5. Peserta didik dapat menuliskan kode PBO sederhana menggunakan PHP native (membuat class, object, property, dan method) sesuai rancangan yang telah dibuat.
 
 ### 4. Profil Pelajar Pancasila
 
 - **Bernalar Kritis** — menganalisis perbedaan pendekatan prosedural dan PBO serta memilih solusi pemrograman yang tepat.
-- **Mandiri** — melakukan instalasi environment dan eksplorasi kode secara mandiri sesuai instruksi praktikum.
+- **Mandiri** — merancang Class Diagram dan mempraktikkan kode PBO secara mandiri sesuai instruksi praktikum.
 - **Kreatif** — merancang class dan object baru (tugas mandiri Laptop) dengan variasi property dan method sendiri.
-- **Gotong Royong** — berdiskusi dan saling membantu memecahkan error saat instalasi Laravel di laboratorium.
+- **Gotong Royong** — berdiskusi dalam kelompok untuk menemukan contoh Class dan Object dari aplikasi sehari-hari (LKPD 1) dan saling membantu saat praktik kode di laboratorium.
 
 ### 5. Sarana, Prasarana, dan Target Peserta Didik
 
 | Aspek | Keterangan |
 |---|---|
-| Sarana | Laptop/PC, koneksi internet, text editor/VS Code, XAMPP, Composer, browser |
+| Sarana | Laptop/PC, text editor/VS Code, PHP (XAMPP atau PHP CLI) untuk menjalankan kode, browser |
 | Prasarana | Modul ajar, LKPD, proyektor, Laboratorium Komputer |
 | Target Peserta Didik | Reguler (tidak ada kesulitan dalam mencerna materi ajar) |
 | Jumlah Peserta Didik | Maksimal 36 peserta didik per rombel |
 
 ### 6. Pemahaman Bermakna
 
-Peserta didik menyadari bahwa hampir seluruh aplikasi digital yang mereka gunakan sehari-hari — mulai dari aplikasi belanja online, transportasi online, hingga mobile banking — dibangun menggunakan konsep PBO. Memahami PBO berarti memahami "cara berpikir" di balik aplikasi-aplikasi tersebut.
+Peserta didik menyadari bahwa hampir seluruh aplikasi digital yang mereka gunakan sehari-hari — mulai dari aplikasi belanja online, transportasi online, hingga dompet digital — dibangun menggunakan konsep PBO. Sebelum menulis kode, seorang programmer perlu merancang terlebih dahulu class apa saja yang dibutuhkan; memahami PBO berarti memahami "cara berpikir" sekaligus "cara merancang" di balik aplikasi-aplikasi tersebut.
 
 ### 7. Pertanyaan Pemantik
 
-- Pernahkah kalian membuka aplikasi Gojek, Shopee, atau mobile banking? Menurut kalian, bagaimana programmer mengatur ribuan data pengguna, driver, dan transaksi agar tetap rapi?
+- Pernahkah kalian membuka aplikasi Gojek, Shopee, atau dompet digital? Menurut kalian, bagaimana programmer mengatur ribuan data pengguna, driver, dan transaksi agar tetap rapi?
 - Apa perbedaan antara "cetakan kue" dan "kue yang sudah jadi"? Menurut kalian, apa hubungannya dengan istilah Class dan Object dalam pemrograman?
 
 ---
 
 ## B. KEGIATAN PEMBELAJARAN
 
-### Pertemuan 1 — Konsep Dasar PBO (6 JP)
+### Pertemuan 1 — Konsep Dasar PBO & Class Diagram (6 JP)
 
 **Kegiatan Pendahuluan (15 menit)**
 - Guru membuka kelas, menyapa, dan mengecek kehadiran peserta didik.
@@ -72,32 +73,33 @@ Peserta didik menyadari bahwa hampir seluruh aplikasi digital yang mereka gunaka
 **Kegiatan Inti (240 menit)**
 - Peserta didik menyimak penjelasan guru mengenai konsep PBO, perbandingan Prosedural vs PBO, serta komponen utama PBO (materi bagian 1-2).
 - Peserta didik berdiskusi kelompok kecil mencari 3 contoh Class dan Object dari aplikasi/benda di sekitar mereka (LKPD 1).
-- Peserta didik menyimak penjelasan empat pilar PBO beserta analogi kehidupan sehari-hari (materi bagian 3).
-- Peserta didik mempraktikkan kode `dasar_pbo.php` secara mandiri di laboratorium komputer (materi bagian 4).
+- Peserta didik menyimak penjelasan cara membaca dan menggambar Class Diagram sederhana (materi bagian 3).
+- Peserta didik berlatih menggambar Class Diagram untuk sebuah studi kasus sederhana yang diberikan guru.
 
 **Kegiatan Penutup (15 menit)**
 - Peserta didik menyimpulkan materi bersama guru.
 - Guru memberikan pertanyaan refleksi dan menutup pelajaran.
 
-### Pertemuan 2 — Setup Environment & Instalasi Laravel (6 JP)
+### Pertemuan 2 — Pilar Abstraction, Polymorphism & Praktik PHP Native (6 JP)
 
-**Kegiatan Inti**
-- Peserta didik melakukan praktikum instalasi Laravel secara berurutan (materi bagian 5) dengan pendampingan guru.
-- Peserta didik menjalankan server lokal dan memverifikasi tampilan halaman utama Laravel.
-- Guru berkeliling memfasilitasi peserta didik yang mengalami kendala instalasi (troubleshooting).
+**Kegiatan Pendahuluan (15 menit)**
+- Guru mengulas singkat Class Diagram yang dibuat pada pertemuan sebelumnya.
+- Guru menyampaikan tujuan pembelajaran pertemuan ini.
 
-### Pertemuan 3 — Penerapan PBO pada Laravel (MVC) (6 JP)
+**Kegiatan Inti (240 menit)**
+- Peserta didik menyimak penjelasan pilar **Abstraction** dan **Polymorphism** beserta analogi kehidupan sehari-hari (materi bagian 4).
+- Peserta didik mempraktikkan kode `dasar_pbo.php` secara mandiri di laboratorium komputer, mengacu pada Class Diagram yang telah dirancang (materi bagian 5).
+- Peserta didik mengerjakan Tugas Mandiri (materi bagian 6) sebagai asesmen sumatif.
 
-**Kegiatan Inti**
-- Peserta didik menyimak penjelasan penerapan Inheritance pada Model dan logika pemrograman pada Controller (materi bagian 6).
-- Peserta didik mempraktikkan pembuatan SiswaController beserta routing-nya.
-- Peserta didik mengerjakan Tugas Mandiri (materi bagian 7) sebagai asesmen sumatif.
+**Kegiatan Penutup (15 menit)**
+- Peserta didik menyimpulkan materi bersama guru.
+- Guru memberikan pertanyaan refleksi dan menutup pelajaran.
 
 ---
 
 ## C. MATERI PEMBELAJARAN
 
-## BAB 1: Dasar-Dasar Pemrograman Berorientasi Objek (PBO) & Setup Laravel
+## BAB 1: Konsep Dasar Pemrograman Berorientasi Objek (PBO)
 
 ### 1. Identifikasi & Konsep Pemrograman Berorientasi Objek (PBO)
 
@@ -118,7 +120,7 @@ Peserta didik menyadari bahwa hampir seluruh aplikasi digital yang mereka gunaka
 
 #### C. Penggunaan PBO
 
-PBO digunakan secara luas dalam bahasa seperti PHP, Java, C#, Python, dan C++. Pada ekosistem PHP modern, framework seperti **Laravel** dibangun 100% menggunakan paradigma PBO. Contoh nyata aplikasi berbasis PBO yang sering digunakan siswa: aplikasi e-commerce (Shopee, Tokopedia), aplikasi perbankan digital, aplikasi presensi sekolah, dan sistem informasi akademik.
+PBO digunakan secara luas dalam bahasa seperti PHP, Java, C#, Python, dan C++. Contoh nyata aplikasi berbasis PBO yang sering digunakan siswa: aplikasi e-commerce (Shopee, Tokopedia), aplikasi perbankan digital, aplikasi presensi sekolah, dan sistem informasi akademik. Pada semester berikutnya, kalian akan mempelajari bagaimana konsep PBO ini diterapkan secara penuh pada sebuah *framework* PHP untuk membangun aplikasi yang lebih besar dan terstruktur.
 
 ---
 
@@ -136,7 +138,39 @@ PBO digunakan secara luas dalam bahasa seperti PHP, Java, C#, Python, dan C++. P
 
 ---
 
-### 3. Empat Pilar Utama PBO
+### 3. Merancang Class dengan Class Diagram Sederhana
+
+Sebelum menulis kode, seorang programmer biasanya merancang dahulu class yang dibutuhkan agar tidak salah struktur di tengah jalan. Salah satu alat bantu yang umum dipakai adalah **Class Diagram**, yaitu notasi visual sederhana berbentuk kotak yang terbagi menjadi tiga bagian:
+
+1. **Nama Class** — di bagian paling atas.
+2. **Property** — daftar data yang dimiliki class, di bagian tengah.
+3. **Method** — daftar aksi/perilaku yang dimiliki class, di bagian bawah.
+
+**Contoh Class Diagram untuk Class `Mobil`:**
+
+```
+┌───────────────────────────┐
+│           Mobil            │
+├───────────────────────────┤
+│ merk                       │
+│ warna                      │
+│ kecepatan                  │
+├───────────────────────────┤
+│ tambahKecepatan(tambahan)  │
+│ mengeram()                 │
+└───────────────────────────┘
+```
+
+> 🌍 **Analogi**
+> Class Diagram itu seperti sketsa arsitek sebelum membangun rumah. Arsitek tidak langsung menumpuk bata, tetapi menggambar dulu denahnya — ruang apa saja yang ada dan apa fungsinya. Begitu juga programmer: sebelum menulis `class Mobil { ... }`, akan lebih mudah kalau sudah punya sketsa property dan method apa saja yang dibutuhkan.
+
+> 💡 **Catatan:** Pada bab ini, Class Diagram digunakan secara sederhana hanya untuk latihan merancang property dan method. Notasi lanjutan seperti tanda visibilitas (`+`/`-`) dan relasi antar-class (Inheritance) akan dipelajari lebih lanjut pada modul terpisah.
+
+---
+
+### 4. Pilar PBO yang Dipelajari pada Bab Ini: Abstraction & Polymorphism
+
+> 💡 Empat pilar utama PBO adalah Abstraction, Encapsulation, Inheritance, dan Polymorphism. Pada bab ini kita membahas **Abstraction** dan **Polymorphism** terlebih dahulu. **Encapsulation** dan **Inheritance** dibahas secara khusus pada modul terpisah.
 
 #### a. Abstraction (Abstraksi)
 
@@ -145,26 +179,9 @@ PBO digunakan secara luas dalam bahasa seperti PHP, Java, C#, Python, dan C++. P
 - **Contoh:** Class `Hewan` membawahi subsistem spesifik seperti `Sapi`, `Kambing`, dan `Kucing`.
 
 > 🌍 **Analogi**
-> Saat kalian mengendarai motor, kalian cukup tahu cara "tarik gas" dan "tekan rem" untuk berjalan atau berhenti. Kalian tidak perlu tahu detail rumit di dalam mesin (pembakaran bahan bakar, kerja piston, dsb). Itulah abstraksi — pengguna hanya melihat fitur penting (method) tanpa perlu tahu cara kerja rinci di baliknya. Begitu juga aplikasi e-wallet: pengguna cukup tekan tombol "Bayar", tanpa perlu tahu proses enkripsi dan verifikasi bank di belakang layar.
+> Saat kalian mengendarai motor, kalian cukup tahu cara "tarik gas" dan "tekan rem" untuk berjalan atau berhenti. Kalian tidak perlu tahu detail rumit di dalam mesin (pembakaran bahan bakar, kerja piston, dsb). Itulah abstraksi — pengguna hanya melihat fitur penting (method) tanpa perlu tahu cara kerja rinci di baliknya. Begitu juga aplikasi dompet digital: pengguna cukup tekan tombol "Bayar", tanpa perlu tahu proses enkripsi dan verifikasi bank di belakang layar.
 
-#### b. Encapsulation (Enkapsulasi)
-
-- **Pengertian:** Proses penyatuan data bersama method-nya ke dalam satu wadah (class).
-- **Fungsi:** Menyembunyikan rincian internal dan menjaga data agar tidak diakses secara sembarangan.
-
-> 🌍 **Analogi**
-> Bayangkan kartu ATM kalian. Saldo di rekening tidak bisa diubah langsung oleh siapa pun secara sembarangan — harus melalui "pintu" tertentu, yaitu memasukkan PIN lalu memilih menu tarik tunai/transfer. Saldo (property) disembunyikan dan hanya bisa diakses/diubah melalui method resmi (verifikasi PIN, transaksi). Itulah enkapsulasi: melindungi data penting agar tidak diubah secara sembarangan dari luar.
-
-#### c. Inheritance (Pewarisan)
-
-- **Pengertian:** Konsep mewariskan property dan method milik class induk (*super class*) kepada class turunannya (*child class*).
-- **Fungsi:** Efisiensi kode—class turunan tidak perlu menulis ulang kode yang sudah ada pada class induk.
-- **Contoh:** Class `Kakek` → `Ayah` → `Anak`.
-
-> 🌍 **Analogi**
-> Class `Kendaraan` punya property seperti kecepatan dan method seperti `jalan()` dan `berhenti()`. Class `Mobil` dan Class `Motor` bisa mewarisi (`extends`) semua itu dari Class `Kendaraan`, sehingga tidak perlu menulis ulang kode `jalan()` dan `berhenti()` dari nol — mereka tinggal menambahkan hal khusus, misalnya `Mobil` punya `bukaBagasi()` dan `Motor` punya `standarSamping()`. Persis seperti anak yang mewarisi sifat dari orang tuanya, tetapi tetap punya keunikan sendiri.
-
-#### d. Polymorphism (Polimorfisme)
+#### b. Polymorphism (Polimorfisme)
 
 - **Pengertian:** Memungkinkan penggunaan nama interface/method yang sama pada objek berbeda, namun dengan cara kerja yang disesuaikan.
 - **Contoh:** Class `Mobil` dan Class `Motor` sama-sama memiliki method `melaju()`, namun mekanisme mesin internalnya berbeda.
@@ -174,9 +191,9 @@ PBO digunakan secara luas dalam bahasa seperti PHP, Java, C#, Python, dan C++. P
 
 ---
 
-### 4. Implementasi Kode PBO pada PHP Native
+### 5. Implementasi Kode PBO pada PHP Native
 
-Buat file baru bernama `dasar_pbo.php` di text editor kalian, lalu ketik kode berikut:
+Buat file baru bernama `dasar_pbo.php` di text editor kalian, lalu ketik kode berikut. Kode ini adalah hasil "terjemahan" dari Class Diagram `Mobil` yang sudah kita rancang pada materi bagian 3.
 
 ```php
 <?php
@@ -210,7 +227,7 @@ $mobilDua->merk = "Honda Civic";
 $mobilDua->warna = "Hitam";
 
 // 3. MEMANGGIL METHOD MENGGUNAKAN OPERATOR '->'
-echo $mobilSatu->tambahKecepatan(80); 
+echo $mobilSatu->tambahKecepatan(80);
 // Output: Mobil Toyota Supra berwarna Merah sedang melaju 80 km/jam!
 
 echo "<br>";
@@ -231,154 +248,35 @@ echo $mobilDua->mengeram();
 
 ---
 
-### 5. Panduan Praktikum: Setup Environment & Instalasi Laravel
-
-Ikuti langkah-langkah praktikum berikut untuk menginstal dan menjalankan framework Laravel di komputer lab/laptop masing-masing:
-
-**Langkah 1: Cek Tools**
-
-Buka **Terminal** / **Git Bash** / **CMD**, lalu jalankan perintah berikut untuk memastikan PHP dan Composer siap:
-
-```bash
-php -v
-composer -v
-```
-
-**Langkah 2: Masuk ke Folder Kerja**
-
-Pindahkan direktori terminal ke folder penyimpanan projek kalian (misalnya folder `htdocs` di XAMPP):
-
-```bash
-cd C:/xampp/htdocs
-```
-
-**Langkah 3: Install Project Laravel Baru**
-
-Jalankan perintah berikut untuk mengunduh dan membuat project Laravel bernama `pbo-laravel`:
-
-```bash
-composer create-project laravel/laravel pbo-laravel
-```
-
-*Tunggu proses download hingga muncul tulisan **"Application key set successfully."***
-
-**Langkah 4: Buka Project di VS Code**
-
-Masuk ke folder project yang telah dibuat, lalu buka di Visual Studio Code:
-
-```bash
-cd pbo-laravel
-code .
-```
-
-**Langkah 5: Jalankan Server Lokal**
-
-Nyalakan server bawaan Laravel dengan menjalankan perintah Artisan berikut di terminal VS Code:
-
-```bash
-php artisan serve
-```
-
-Buka browser dan akses alamat `http://127.0.0.1:8000`. Jika halaman utama Laravel tampil, maka instalasi **berhasil**.
-
-> 💡 **Tips Troubleshooting**
-> - Jika muncul pesan error 'php is not recognized', pastikan folder PHP sudah ditambahkan ke Environment Variables (PATH) di komputer kalian.
-> - Jika `composer create-project` gagal, periksa kembali koneksi internet karena Composer mengunduh paket dari server.
-
----
-
-### 6. Penerapan PBO pada Framework Laravel
-
-Di dalam Laravel, konsep PBO terimplementasi penuh pada arsitektur **MVC (Model-View-Controller)**.
-
-> 🌍 **Analogi MVC**
-> Bayangkan restoran cepat saji. **Model** adalah gudang bahan baku (mengurus data mentah dari database). **Controller** adalah koki (mengolah data sesuai pesanan/logika). **View** adalah tampilan makanan yang disajikan ke pelanggan (tampilan yang dilihat pengguna di browser). Ketiganya bekerja sama namun punya tugas terpisah, sehingga dapur (aplikasi) tetap rapi walau pesanan (fitur) semakin banyak.
-
-#### A. Model (Representasi Database & Inheritance)
-
-Di Laravel, setiap tabel database diwakili oleh Class Model yang mewarisi sifat dari Class `Model` bawaan Laravel (`extends`):
-
-```php
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-// Class 'Siswa' mewarisi (Inheritance) fungsi dari Class Model bawaan
-class Siswa extends Model {
-    protected $table = 'siswa'; // Property internal
-}
-```
-
-#### B. Controller (Logika Aplikasi)
-
-Controller di Laravel berfungsi mengatur logika program dengan menggunakan Class dan Method.
-
-**Praktikum Siswa (Membuat Controller):**
-
-1. Buka terminal di VS Code, ketik perintah Artisan berikut:
-```bash
-php artisan make:controller SiswaController
-```
-
-2. Buka file `app/Http/Controllers/SiswaController.php`, lalu sesuaikan kodenya:
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class SiswaController extends Controller 
-{
-    public $sekolah = "SMK Negeri 1";
-
-    public function index() 
-    {
-        $namaSiswa = "Ahmad";
-        $kelas = "XI PPLG 1";
-
-        return "Halo! Nama saya " . $namaSiswa . " (" . $kelas . ") dari " . $this->sekolah;
-    }
-}
-```
-
-3. Daftarkan Controller pada file `routes/web.php`:
-```php
-use App\Http\Controllers\SiswaController;
-
-Route::get('/siswa', [SiswaController::class, 'index']);
-```
-
-4. Akses melalui browser pada alamat: `http://127.0.0.1:8000/siswa`.
-
----
-
 ## D. ASESMEN
 
 ### 1. Asesmen Formatif (Diagnostik Awal & Proses)
 
-Dilakukan melalui tanya jawab lisan saat apersepsi dan pengamatan keaktifan diskusi kelompok (LKPD 1) mengenai contoh Class/Object di sekitar peserta didik.
+Dilakukan melalui tanya jawab lisan saat apersepsi dan pengamatan keaktifan diskusi kelompok (LKPD 1) mengenai contoh Class/Object di sekitar peserta didik, serta hasil latihan menggambar Class Diagram.
 
 **Contoh Soal Latihan Lisan/Kuis Singkat**
 
 1. Sebutkan 3 contoh Class dan Object dari aplikasi yang kalian gunakan sehari-hari!
-2. Mengapa saldo pada aplikasi mobile banking tidak bisa diubah langsung oleh pengguna? Pilar PBO apa yang berkaitan dengan hal ini?
-3. Jelaskan perbedaan antara Class `Kendaraan` dengan Object "motor Ahmad bernomor plat B 1234 XYZ".
+2. Mengapa saat mengendarai motor kita cukup tahu "tarik gas" dan "tekan rem" tanpa perlu tahu cara kerja mesin di dalamnya? Pilar PBO apa yang berkaitan dengan hal ini?
+3. GoPay, OVO, dan DANA sama-sama memiliki method `bayar()`, tetapi cara kerja di baliknya berbeda. Pilar PBO apa yang ditunjukkan oleh contoh ini?
+4. Jelaskan perbedaan antara Class `Kendaraan` dengan Object "motor Ahmad bernomor plat B 1234 XYZ".
 
 ### 2. Asesmen Sumatif — Tugas Mandiri
 
-Kerjakan tugas berikut secara individu, lalu kumpulkan file kode dan tangkapan layar (screenshot) hasil output di browser.
+Kerjakan tugas berikut secara individu, lalu kumpulkan gambar Class Diagram, file kode, dan tangkapan layar (screenshot) hasil output di browser.
 
-1. Buatlah sebuah class baru bernama `Laptop` (bisa di PHP native atau buat `LaptopController` di Laravel) dengan ketentuan:
+1. Rancang terlebih dahulu **Class Diagram sederhana** untuk sebuah class baru bernama `Laptop` dengan ketentuan:
    - Property: `$merk`, `$ram`, dan `$prosesor`.
    - Method: `tampilkanSpesifikasi()` yang mengembalikan deskripsi laptop tersebut.
-2. Buat **2 Object laptop yang berbeda** (contoh: ASUS dan Lenovo), lalu tampilkan hasilnya di browser!
-3. *(Tantangan tambahan)* Tambahkan method `hitungTotalHarga($diskon)` yang menghitung harga laptop setelah diskon, untuk melatih pemahaman kalian tentang method dengan parameter.
+2. Terjemahkan Class Diagram tersebut menjadi kode PHP native (`class Laptop { ... }`).
+3. Buat **2 Object laptop yang berbeda** (contoh: ASUS dan Lenovo), lalu tampilkan hasilnya di browser!
+4. *(Tantangan tambahan)* Tambahkan method `hitungTotalHarga($diskon)` yang menghitung harga laptop setelah diskon, untuk melatih pemahaman kalian tentang method dengan parameter.
 
 **Rubrik Penilaian Tugas Mandiri**
 
 | Aspek Penilaian | Skor 4 (Sangat Baik) | Skor 3 (Baik) | Skor 2 (Cukup) | Skor 1 (Perlu Bimbingan) |
 |---|---|---|---|---|
+| Class Diagram | Diagram lengkap dan sesuai dengan kode yang dibuat | Diagram ada, sedikit tidak sesuai dengan kode | Diagram dibuat namun kurang lengkap | Diagram tidak dibuat |
 | Struktur Class & Property | Class dan seluruh property benar & sesuai ketentuan | Class benar, 1 property kurang tepat | Class benar, lebih dari 1 property kurang tepat | Class tidak terbentuk dengan benar |
 | Method & Logika | Method berjalan sempurna dan menghasilkan output sesuai | Method berjalan, output kurang lengkap | Method ada namun terdapat error kecil | Method tidak berhasil dijalankan |
 | Object (Instansiasi) | 2 object dibuat dengan data berbeda & benar | 2 object dibuat, sedikit kesalahan data | Hanya 1 object berhasil dibuat | Belum berhasil membuat object |
@@ -387,14 +285,14 @@ Kerjakan tugas berikut secara individu, lalu kumpulkan file kode dan tangkapan l
 ### 3. Refleksi Peserta Didik
 
 - Bagian materi PBO mana yang menurut kalian paling mudah dipahami? Mengapa?
-- Bagian materi PBO mana yang masih terasa sulit? Apa yang akan kalian lakukan untuk memahaminya lebih lanjut?
+- Apakah membuat Class Diagram terlebih dahulu membantu kalian saat menulis kode? Mengapa?
 - Setelah mempelajari bab ini, coba sebutkan satu aplikasi baru (selain yang dicontohkan) beserta kemungkinan Class dan Object di dalamnya!
 
 ### 4. Refleksi Guru
 
-- Apakah seluruh peserta didik berhasil menginstal Laravel dengan lancar? Kendala apa yang paling sering muncul?
-- Apakah analogi kehidupan sehari-hari membantu peserta didik memahami empat pilar PBO?
-- Perlukah alokasi waktu tambahan untuk sesi praktikum instalasi pada pertemuan berikutnya?
+- Apakah peserta didik cukup terbantu dengan latihan Class Diagram sebelum menulis kode, atau justru terasa sebagai langkah tambahan yang membingungkan?
+- Apakah analogi kehidupan sehari-hari membantu peserta didik memahami pilar Abstraction dan Polymorphism?
+- Perlukah alokasi waktu tambahan untuk sesi praktik kode PHP native pada pertemuan berikutnya?
 
 ---
 
@@ -407,16 +305,14 @@ Kerjakan tugas berikut secara individu, lalu kumpulkan file kode dan tangkapan l
 | Property | Variabel yang menyimpan data/karakteristik suatu objek. |
 | Method | Fungsi di dalam class yang mendeskripsikan perilaku/aksi objek. |
 | Instansiasi | Proses membuat object baru dari sebuah class menggunakan keyword `new`. |
-| Inheritance | Pewarisan property dan method dari class induk ke class turunan. |
-| Encapsulation | Penyatuan data & method serta pembatasan akses langsung terhadap data. |
+| Class Diagram | Notasi visual sederhana untuk merancang nama class, property, dan method sebelum menulis kode. |
+| Abstraction | Penyederhanaan sistem kompleks dengan hanya menampilkan hal-hal penting/relevan. |
 | Polymorphism | Kemampuan method dengan nama sama bekerja berbeda pada objek berbeda. |
-| MVC | Model-View-Controller, pola arsitektur pemisahan data, logika, dan tampilan. |
-| Artisan | Command Line Interface (CLI) bawaan Laravel untuk mempercepat pengembangan. |
 
 ---
 
 ## F. DAFTAR PUSTAKA
 
-- Laravel Documentation. https://laravel.com/docs
 - PHP Manual — Object-Oriented Programming. https://www.php.net/manual/en/language.oop5.php
+- UML Diagrams — Class Diagram Overview. https://www.uml-diagrams.org/class-diagrams-overview.html
 - Modul Pembelajaran Informatika/RPL Kurikulum Merdeka, Kemendikbudristek.
