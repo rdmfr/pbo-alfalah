@@ -34,7 +34,7 @@ Bab ini adalah jembatan. Setelah bab ini selesai (masih di Semester 1), kalian a
 | No | Materi | Analogi Sederhana | Bisa dites di onlinephp.io? |
 |---|---|---|---|
 | 1 | Error & Exception Handling (+ Custom Exception) | Sabuk pengaman mobil | Bisa |
-| 2 | Namespace & Autoloading (+ struktur PSR-4 nyata) | Alamat rumah & nama lengkap | Bisa (disimulasikan) |
+| 2 | Namespace & Autoloading (+ instalasi Composer & struktur PSR-4 nyata) | Alamat rumah & nama lengkap | Bisa (disimulasikan, termasuk simulasi `spl_autoload_register()`) |
 | 3 | Koneksi Database Modern (PDO OOP + Transaction) | Penerjemah antara kamu dan database | Tidak, butuh XAMPP/Laragon |
 | 4 | Arsitektur MVC (+ Front Controller sederhana) | Restoran (Dapur, Pelayan, Meja Makan) | Tidak, butuh XAMPP/Laragon |
 | 5 | Mini Project Terpadu | Ujian praktik gabungan semua bab | Tidak, butuh XAMPP/Laragon |
@@ -327,26 +327,185 @@ namespace {
 
 Catatan guru: di dunia nyata (dan di Laravel nanti pada Semester 2), kita menggunakan fitur Composer dengan aturan bernama PSR-4, di mana struktur namespace (`App\Models\...`) harus cocok persis dengan struktur folder fisik (`app/Models/...`). Setelah itu, Autoloading akan mencari file secara otomatis begitu class-nya dipanggil, sehingga kalian tidak perlu menulis require sama sekali.
 
-### 2.1 Materi Tambahan: Struktur Folder Nyata (PSR-4) dan Cara Composer Bekerja
+### 2.1 Materi Tambahan: Apa Itu Composer, dan Cara Menginstalnya
 
-Simulasi di atas memakai satu file supaya bisa dites di onlinephp.io. Tapi di project sungguhan (XAMPP/Laragon), **satu file hanya boleh berisi satu namespace/class**, dan strukturnya harus sama persis dengan struktur folder. Ini aturan bernama **PSR-4**.
+#### Kenapa Butuh Composer?
+
+Simulasi namespace di atas masih memakai `require`/`use` manual dalam satu file. Begitu project kalian punya puluhan class di banyak folder, menulis `require_once` satu per satu jadi sangat merepotkan dan rawan lupa. **Composer** adalah *package manager* (pengelola paket/pustaka) resmi untuk PHP. Dua tugas utamanya:
+
+1. **Mengunduh & mengelola library** pihak ketiga (misalnya nanti Laravel itu sendiri, atau pustaka kecil seperti pembuat PDF, pengirim email, dsb.), tanpa kalian harus download manual satu per satu dari internet.
+2. **Membuat Autoloading otomatis**: cukup daftarkan aturan PSR-4 sekali di `composer.json`, lalu Composer yang akan mencari dan memuat file class kalian sendiri, tanpa `require_once` manual.
+
+**Analogi:** Composer itu seperti asisten pribadi toko bangunan. Kalian cukup bilang "saya butuh semen merek X sebanyak 10 sak", asisten itu yang akan mencari, membeli, dan menyusunnya rapi di gudang (folder `vendor/`) kalian, sekaligus mencatat semua barang yang pernah dipesan supaya bisa dipesan ulang persis sama di komputer lain.
+
+#### Cara Menginstal Composer
+
+Composer **bukan** bagian bawaan XAMPP, jadi harus diinstal terpisah (kecuali **Laragon**, yang sudah menyertakan Composer secara bawaan dan bisa langsung dipakai lewat menu Laragon → Terminal).
+
+**Langkah instalasi di Windows (XAMPP atau tanpa Laragon):**
+
+1. Pastikan PHP sudah bisa dipanggil dari Command Prompt/Terminal. Cek dengan mengetik `php -v`; kalau belum dikenali, tambahkan folder PHP (misalnya `C:\xampp\php`) ke *Environment Variable* `PATH` terlebih dahulu.
+2. Buka `https://getcomposer.org/download/` lalu unduh **Composer-Setup.exe** (installer resmi untuk Windows).
+3. Jalankan installer tersebut. Installer akan otomatis mendeteksi lokasi `php.exe` di komputer kalian, kalau tidak terdeteksi, arahkan manual ke folder PHP XAMPP kalian (mis. `C:\xampp\php\php.exe`).
+4. Selesaikan proses instalasi sampai selesai (Next → Next → Install → Finish).
+5. Buka Command Prompt **baru** (wajib buka ulang supaya PATH ter-update), lalu ketik:
+   ```
+   composer -V
+   ```
+   Jika muncul versi Composer (misalnya `Composer version 2.x.x`), instalasi berhasil.
+
+**Langkah instalasi di macOS / Linux:**
+
+1. Buka Terminal, lalu jalankan perintah berikut satu per satu:
+   ```bash
+   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+   php composer-setup.php
+   php -r "unlink('composer-setup.php');"
+   ```
+2. Perintah kedua akan menghasilkan file `composer.phar` di folder yang sama. Supaya bisa dipanggil dengan perintah singkat `composer` dari folder manapun, pindahkan file itu ke folder sistem:
+   ```bash
+   sudo mv composer.phar /usr/local/bin/composer
+   ```
+3. Uji instalasi:
+   ```bash
+   composer -V
+   ```
+
+**Kalau pakai Laragon:** tidak perlu instalasi tambahan. Buka Laragon, klik menu **Terminal**, lalu langsung bisa mengetik `composer -V` untuk memastikan Composer sudah tersedia.
+
+#### Perintah Composer yang Paling Sering Dipakai
+
+| Perintah | Fungsi |
+|---|---|
+| `composer -V` | Mengecek versi Composer yang terpasang |
+| `composer init` | Membuat `composer.json` baru secara interaktif (dipandu tanya-jawab) |
+| `composer dump-autoload` | Membaca ulang aturan `autoload` di `composer.json` dan membangun ulang `vendor/autoload.php` |
+| `composer require nama/paket` | Mengunduh sebuah library dan otomatis menambahkannya ke `composer.json` |
+| `composer install` | Mengunduh semua library yang tercatat di `composer.json` (dipakai saat memindahkan project ke komputer lain) |
+
+### 2.2 Materi Tambahan: Simulasi Cara Kerja Autoloading dengan `spl_autoload_register()`
+
+Composer tidak bisa dijalankan langsung di onlinephp.io (karena butuh Terminal dan sistem file sungguhan). Tapi **mekanisme di balik layarnya** justru bisa disimulasikan dan dites di onlinephp.io, memakai fungsi bawaan PHP bernama `spl_autoload_register()`. Fungsi inilah "mesin" yang sebenarnya dipakai Composer untuk membuat Autoloading bekerja secara otomatis.
+
+**Analogi:** `spl_autoload_register()` itu seperti mendaftarkan nomor telepon "resepsionis darurat". Begitu PHP menemukan `new NamaClass()` untuk class yang belum dikenal, PHP otomatis "menelepon" resepsionis itu dan bertanya, "tolong carikan class bernama ini". Composer hanya mengisi resepsionis itu dengan logika pencarian berbasis PSR-4 secara otomatis, sedangkan di bawah ini kita menulis versi sederhananya sendiri.
+
+Bisa dites langsung di onlinephp.io. Salin dan Execute kode di bawah.
+
+```php
+<?php
+// SIMULASI mesin Autoloading. Di project Composer sungguhan, kode
+// semacam inilah (versi jauh lebih canggih) yang berjalan otomatis
+// di dalam file vendor/autoload.php begitu kalian require file itu.
+
+// Di project ASLI (bukan simulasi), isi fungsi ini biasanya:
+//   $file = __DIR__ . '/src/' . str_replace('\\', '/', $namaClass) . '.php';
+//   if (file_exists($file)) { require $file; }
+// Supaya bisa dites di onlinephp.io (yang cuma menyediakan SATU file),
+// kita "berpura-pura" isi file class disimpan sebagai teks di array ini.
+$daftarFileVirtual = [
+    'App\\Models\\Produk' => '
+        namespace App\\Models;
+        class Produk {
+            public function info() {
+                return "Ini data Produk dari bagian Model (Database).";
+            }
+        }
+    ',
+    'App\\Controllers\\Produk' => '
+        namespace App\\Controllers;
+        class Produk {
+            public function info() {
+                return "Ini alur Produk dari bagian Controller (Logika).";
+            }
+        }
+    ',
+];
+
+// spl_autoload_register() mendaftarkan sebuah fungsi yang akan PHP
+// panggil OTOMATIS setiap kali ada "new NamaClass()" untuk class yang
+// belum pernah dikenal PHP sebelumnya. Tidak perlu require manual lagi.
+spl_autoload_register(function ($namaClassLengkap) use ($daftarFileVirtual) {
+    echo "[Autoloader dipanggil untuk: $namaClassLengkap]\n";
+
+    if (isset($daftarFileVirtual[$namaClassLengkap])) {
+        // eval() di sini HANYA untuk mensimulasikan "memuat file" tanpa
+        // file sungguhan. Di project nyata baris ini diganti "require $file;"
+        eval($daftarFileVirtual[$namaClassLengkap]);
+    }
+});
+
+// PERHATIKAN: sampai baris ini TIDAK ADA satupun require/include.
+// Class baru dicari & dimuat saat benar-benar dipakai (new ...), berkat
+// autoloader yang sudah didaftarkan di atas — persis prinsip Composer.
+use App\Models\Produk as ProdukModel;
+use App\Controllers\Produk as ProdukController;
+
+$a = new ProdukModel();
+$b = new ProdukController();
+
+echo $a->info() . "\n";
+echo $b->info() . "\n";
+```
+
+**Penjelasan baris per baris:**
+
+- `$daftarFileVirtual` bagian ini **hanya trik untuk simulasi** di onlinephp.io. Di project sungguhan, class-nya benar-benar berada di file terpisah, bukan disimpan dalam variabel teks.
+- `spl_autoload_register(function ($namaClassLengkap) { ... })` inilah baris paling penting: mendaftarkan sebuah "petugas pencari class" yang akan aktif otomatis kapanpun PHP butuh class yang belum dikenal.
+- `eval(...)` fungsi ini menjalankan teks sebagai kode PHP sungguhan. **Catatan penting:** `eval()` jarang dipakai di project nyata (berisiko keamanan kalau isinya berasal dari input pengguna), di sini hanya dipakai demi simulasi. Di project nyata, baris ini digantikan `require $file;`.
+- `use App\Models\Produk as ProdukModel;` sampai baris ini class `Produk` di `App\Models` **belum benar-benar ada** di memori PHP. Class itu baru benar-benar "lahir" saat baris `new ProdukModel();` dijalankan, dan itulah saat autoloader dipanggil (perhatikan tulisan `[Autoloader dipanggil untuk: ...]` yang tercetak duluan sebelum hasil `info()`).
+
+### 2.3 Materi Tambahan: Membuat Project Composer Sungguhan dari Nol (Langkah demi Langkah)
+
+Bagian ini menyambungkan simulasi di atas dengan project nyata di XAMPP/Laragon, lengkap dari nol.
+
+**Langkah 1 — Buat folder project**
+
+Buka folder `htdocs` (XAMPP) atau `www` (Laragon), lalu buat folder baru bernama `project_namespace`.
+
+**Langkah 2 — Buka Terminal di folder tersebut**
+
+- XAMPP: buka Command Prompt/Terminal biasa, lalu `cd` ke folder `project_namespace`.
+- Laragon: klik kanan folder tersebut di Laragon → **Terminal**, atau klik menu Terminal lalu `cd` ke foldernya.
+
+**Langkah 3 — Buat `composer.json`**
+
+Ada dua cara, pilih salah satu:
+
+*Cara A (interaktif, direkomendasikan untuk pemula):* jalankan
+```bash
+composer init
+```
+lalu jawab pertanyaan yang muncul satu per satu (nama package boleh diisi bebas, misalnya `sekolah/project-namespace`; deskripsi boleh dikosongkan; pertanyaan lain boleh ditekan Enter untuk memakai nilai bawaan). Di pertanyaan terakhir ("Add PSR-4 autoload mapping?"), jawab `yes`, lalu isi namespace `App\\` dan folder `src/`.
+
+*Cara B (manual, lebih cepat kalau sudah paham):* buat file baru bernama `composer.json` langsung di folder project, isi persis seperti ini:
+```json
+{
+    "name": "sekolah/project-namespace",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
+```
+
+**Langkah 4 — Buat struktur folder `src/`**
+
+Buat folder dan file berikut secara manual (lewat File Explorer/VS Code, bukan lewat Composer):
 
 ```
 project_namespace/
 ├── composer.json
-├── vendor/                     <- dibuat otomatis oleh Composer
 └── src/
     ├── Models/
-    │   └── Produk.php          <- namespace App\Models;
+    │   └── Produk.php
     └── Controllers/
-        └── Produk.php          <- namespace App\Controllers;
+        └── Produk.php
 ```
 
-**File: `src/Models/Produk.php`**
+Isi `src/Models/Produk.php`:
 ```php
 <?php
-// Perhatikan: nama file HARUS sama persis dengan nama class (Produk.php untuk class Produk),
-// dan lokasi foldernya (Models/) harus cocok dengan namespace (App\Models).
 namespace App\Models;
 
 class Produk {
@@ -356,32 +515,68 @@ class Produk {
 }
 ```
 
-**File: `composer.json`** (memberi tahu Composer: "semua yang beralamat App\\... ada di folder src/")
-```json
-{
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
+Isi `src/Controllers/Produk.php`:
+```php
+<?php
+namespace App\Controllers;
+
+class Produk {
+    public function info() {
+        return "Ini alur Produk dari bagian Controller (Logika).";
     }
 }
 ```
 
-Setelah `composer.json` dibuat, jalankan `composer dump-autoload` di terminal (di dalam folder project). Composer akan membuat file `vendor/autoload.php` yang, kalau di-`require` sekali di `index.php`, akan otomatis memuat class manapun yang dipanggil, tanpa `require_once` manual satu per satu lagi.
+**Langkah 5 — Jalankan `composer dump-autoload`**
 
-```php
-<?php
-// File: index.php
-// Cukup require SATU file ini, bukan setiap Class satu per satu.
-require 'vendor/autoload.php';
+Di Terminal yang sudah `cd` ke folder project, jalankan:
+```bash
+composer dump-autoload
+```
+Composer akan membuat folder `vendor/` beserta file `vendor/autoload.php` secara otomatis. Struktur folder sekarang menjadi:
 
-use App\Models\Produk;
-
-$produk = new Produk();
-echo $produk->info();
+```
+project_namespace/
+├── composer.json
+├── vendor/
+│   └── autoload.php        <- dibuat otomatis, JANGAN diedit manual
+└── src/
+    ├── Models/
+    │   └── Produk.php
+    └── Controllers/
+        └── Produk.php
 ```
 
+**Langkah 6 — Buat `index.php` dan jalankan di browser**
+
+Buat file `index.php` **di luar** folder `src/` (sejajar dengan `composer.json`):
+```php
+<?php
+// Cukup require SATU file ini untuk memuat SEMUA class di src/,
+// tanpa require_once manual satu per satu.
+require 'vendor/autoload.php';
+
+use App\Models\Produk as ProdukModel;
+use App\Controllers\Produk as ProdukController;
+
+$a = new ProdukModel();
+$b = new ProdukController();
+
+echo $a->info() . "<br>";
+echo $b->info();
+```
+
+Buka di browser lewat `http://localhost/project_namespace/` (kalau folder ada di dalam `htdocs`/`www`), atau lewat PHP built-in server dari Terminal:
+```bash
+php -S localhost:8000
+```
+lalu buka `http://localhost:8000/` di browser.
+
 **Kenapa ini penting untuk Laravel nanti?** Laravel di Semester 2 memakai persis mekanisme PSR-4 dan Composer ini di balik layar. Jadi kalian nanti tidak perlu belajar Autoloading dari nol lagi, tinggal menyesuaikan struktur folder bawaan Laravel.
+
+### 2.4 Ringkasan: Kenapa Nama File & Folder Harus Cocok Persis (PSR-4)
+
+Inti dari seluruh langkah 2.3 di atas adalah aturan **PSR-4**: nama file harus sama persis dengan nama class (`Produk.php` untuk `class Produk`), dan lokasi foldernya harus cocok dengan namespace-nya (`src/Models/` untuk `namespace App\Models`). Composer memakai aturan inilah untuk menebak lokasi file yang benar tanpa kalian tulis manual satu per satu.
 
 ### Kesalahan Umum yang Sering Terjadi
 
@@ -389,22 +584,29 @@ echo $produk->info();
 2. Lupa `use`, lalu memanggil `new Produk()` langsung di dalam blok `namespace { }` paling bawah. PHP akan bingung, karena ada dua class Produk. Solusinya wajib pakai `use ... as ...` atau menuliskan nama lengkap seperti `new \App\Models\Produk()`.
 3. Nama file tidak sama persis dengan nama class (huruf besar/kecil ikut diperhitungkan di banyak sistem operasi), sehingga Autoloading gagal menemukan file walau namespace-nya sudah benar.
 4. Lupa menjalankan `composer dump-autoload` setelah menambah class/folder baru, sehingga Composer belum "mengenal" file yang baru dibuat.
+5. Mengetik `composer` di Command Prompt lama yang sudah terbuka sebelum instalasi selesai, sehingga PATH belum ter-update dan Composer dianggap "tidak dikenal" padahal sudah terpasang. Solusinya: tutup dan buka ulang Terminal/Command Prompt.
+6. Salah lokasi menaruh `index.php`, sehingga path `require 'vendor/autoload.php';` tidak ditemukan. `index.php` harus sejajar (bukan di dalam) folder `vendor/` dan `src/`.
 
 ### Latihan Praktik
 
-Kerjakan langsung di onlinephp.io, berdasarkan kode simulasi namespace di atas.
+Bagian 1-4 bisa dikerjakan langsung di onlinephp.io (berdasarkan kode simulasi namespace dan simulasi `spl_autoload_register()` di atas). Bagian 5-7 wajib di XAMPP/Laragon karena butuh Composer sungguhan.
 
 1. Tambahkan namespace ketiga bernama `App\Repositories` dengan class `Produk` yang isinya berbeda lagi, misalnya method `info()` mengembalikan teks "Ini Produk dari bagian Repository (penyimpanan sementara)."
-2. Di blok `namespace { }` paling bawah, tambahkan `use` dan alias baru untuk class dari `App\Repositories`, lalu buat objeknya dan cetak hasil `info()`-nya, sehingga total ada tiga objek Produk dari tiga alamat berbeda.
-3. Coba hapus salah satu baris `use ... as ...` lalu ganti pemanggilannya dengan nama lengkap, misalnya `new \App\Controllers\Produk()`. Amati bahwa hasilnya tetap sama, untuk membuktikan bahwa alias hanyalah "jalan pintas" penulisan.
-4. Tantangan tambahan: buat class baru bernama `Kategori` di namespace `App\Models` dan `App\Controllers` sekaligus, lalu panggil keduanya dengan alias berbeda dalam satu file, seperti pada contoh Produk.
-5. (Di XAMPP/Laragon) Buat struktur folder `project_namespace` seperti pada 2.1, lengkap dengan `composer.json`, lalu jalankan `composer dump-autoload` dan buktikan `index.php` bisa memanggil class `Produk` tanpa `require_once` manual.
+2. Di blok `namespace { }` paling bawah pada kode 2.0 (simulasi dasar), tambahkan `use` dan alias baru untuk class dari `App\Repositories`, lalu buat objeknya dan cetak hasil `info()`-nya, sehingga total ada tiga objek Produk dari tiga alamat berbeda.
+3. Pada kode simulasi `spl_autoload_register()` (2.2), tambahkan satu entri baru di `$daftarFileVirtual` untuk class `App\Repositories\Produk`, lalu panggil objeknya dan amati urutan pesan `[Autoloader dipanggil untuk: ...]` yang muncul.
+4. Tantangan tambahan: buat class baru bernama `Kategori` di namespace `App\Models` dan `App\Controllers` sekaligus (pada simulasi 2.0), lalu panggil keduanya dengan alias berbeda dalam satu file, seperti pada contoh Produk.
+5. (Di XAMPP/Laragon) Instal Composer sesuai panduan 2.1, lalu buktikan lewat `composer -V` bahwa instalasi berhasil.
+6. (Di XAMPP/Laragon) Ikuti langkah 2.3 dari awal sampai akhir untuk membuat struktur folder `project_namespace`, lalu buktikan `index.php` bisa memanggil class `Produk` lewat browser tanpa satupun `require_once` manual.
+7. Tantangan tambahan (XAMPP/Laragon): tambahkan namespace ketiga `App\Repositories` sebagai file sungguhan di `src/Repositories/Produk.php`, jalankan ulang `composer dump-autoload`, lalu panggil class tersebut dari `index.php` tanpa mengubah `composer.json` sama sekali (buktikan bahwa PSR-4 otomatis mencakup sub-folder baru).
 
 ### Cek Pemahaman
 
 1. Kalau dua class punya nama sama tapi namespace-nya sama juga, apa yang terjadi?
 2. Apa bedanya `use` di PHP namespace dengan `use App\Models\Produk;` tanpa `as`?
 3. Pada struktur PSR-4, apa hubungan antara nama namespace `App\Models` dengan lokasi folder fisiknya?
+4. Apa dua tugas utama Composer sebagai *package manager*?
+5. Pada simulasi `spl_autoload_register()`, kapan tepatnya fungsi autoloader itu benar-benar dipanggil oleh PHP?
+6. Setelah menambah file class baru di folder `src/`, perintah apa yang wajib dijalankan supaya Composer "mengenal" file tersebut?
 
 ---
 
@@ -899,6 +1101,9 @@ Selamat. Jika kalian berhasil menyelesaikan Mini Project ini, kalian sudah memil
 | Namespace | "Alamat" virtual sebuah class supaya tidak bentrok dengan class bernama sama |
 | Autoloading | Sistem otomatis yang memuat file class tanpa perlu require manual |
 | PSR-4 | Aturan standar PHP yang mencocokkan namespace dengan struktur folder fisik, dipakai Composer untuk Autoloading |
+| Composer | *Package manager* resmi PHP: mengelola library pihak ketiga dan membangkitkan Autoloading otomatis lewat `composer.json` |
+| `composer.json` | File konfigurasi Composer yang mendefinisikan aturan PSR-4 dan daftar library yang dipakai sebuah project |
+| `spl_autoload_register()` | Fungsi bawaan PHP untuk mendaftarkan "petugas pencari class" yang dipanggil otomatis saat class belum dikenal — mesin di balik Autoloading Composer |
 | PDO | PHP Data Objects, cara OOP standar untuk terhubung ke berbagai jenis database |
 | Prepared Statement | Query SQL dengan "loket" (`?` atau `:nama`) supaya data pengguna aman dari SQL Injection |
 | SQL Injection | Serangan siber yang menyisipkan perintah SQL jahat lewat form input |
@@ -910,7 +1115,7 @@ Selamat. Jika kalian berhasil menyelesaikan Mini Project ini, kalian sudah memil
 ## Rangkuman Bab
 
 - Try-Catch menjaga aplikasi tetap berjalan meski ada input yang salah; `Error` dan `Exception` sama-sama turunan `Throwable`, dan Custom Exception membantu menangani kondisi bisnis secara lebih spesifik.
-- Namespace mencegah bentrok nama class saat aplikasi membesar, dan PSR-4 adalah aturan nyata yang menghubungkan namespace dengan struktur folder lewat Composer.
+- Namespace mencegah bentrok nama class saat aplikasi membesar; Composer adalah *package manager* PHP yang membangkitkan Autoloading otomatis lewat aturan PSR-4 di `composer.json`, dan mekanismenya bisa dipahami lewat `spl_autoload_register()`.
 - PDO adalah cara aman dan standar untuk bicara dengan database; Transaction menjaga konsistensi data saat satu aksi melibatkan lebih dari satu perintah SQL.
 - MVC memisahkan tanggung jawab kode: Model (data), View (tampilan), Controller (alur); Front Controller/Router sederhana menyatukan banyak halaman lewat satu pintu masuk.
 - Kelima materi ini adalah fondasi yang dipakai hampir semua framework PHP modern, termasuk Laravel — namun Laravel sendiri baru dipelajari di **Semester 2**, setelah fondasi native PHP ini benar-benar kuat.
