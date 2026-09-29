@@ -139,11 +139,11 @@ echo $pp->hitungKeliling();
 
 Output yang dihasilkan saat kode di atas dijalankan adalah...
 
-- A. 40
-- B. 26
-- C. 13
-- D. Error
-- E. 65
+A. 40
+B. 26
+C. 13
+D. Error
+E. 65
 
 **14.** Perhatikan potongan kode PHP berikut yang mengalami error:
 
